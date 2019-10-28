@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { environment } from '../environments/environment';
+import { ActivitiesModule } from './activities/activities.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
+import { SkillsModule } from './skills/skills.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,10 +16,11 @@ import { SettingsModule } from './settings/settings.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule.forRoot(),
-    SettingsModule,
+    CoreModule,
     DashboardModule,
+    ActivitiesModule,
+    SkillsModule,
+    SettingsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
