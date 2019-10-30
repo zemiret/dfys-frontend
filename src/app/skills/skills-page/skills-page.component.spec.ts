@@ -9,8 +9,7 @@ describe('SkillsPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SkillsPageComponent],
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

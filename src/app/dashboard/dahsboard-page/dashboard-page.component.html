@@ -1,0 +1,7 @@
+<div>
+  <div *ngFor="let skill of skills$ | async">
+    <h3>{{ skill.name }}</h3>
+    <p>{{ skill.id }}</p>
+    <p>{{ skill.addDate }}</p>
+  </div>
+</div>

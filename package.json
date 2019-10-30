@@ -14,7 +14,8 @@
   "akitaCli": {
     "customFolderName": "true",
 	"isAngular": true,
-    "basePath": "./src/app"
+    "basePath": "./src/app",
+    "template": "angular"
   },
   "dependencies": {
     "@angular/animations": "~8.2.9",

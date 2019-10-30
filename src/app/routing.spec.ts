@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivitiesPageComponent } from './activities/activities-page/activities-page.component';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DahsboardPageComponent } from './dashboard/dahsboard-page/dahsboard-page.component';
+import { DashboardPageComponent } from './dashboard/dahsboard-page/dashboard-page.component';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 import { SkillsPageComponent } from './skills/skills-page/skills-page.component';
 
@@ -16,10 +17,10 @@ describe('routes', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule],
       declarations: [
         ActivitiesPageComponent,
-        DahsboardPageComponent,
+        DashboardPageComponent,
         SettingsPageComponent,
         SkillsPageComponent,
         AppComponent,

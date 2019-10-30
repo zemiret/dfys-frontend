@@ -1,19 +1,21 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DahsboardPageComponent } from './dahsboard-page.component';
+import { DashboardPageComponent } from './dashboard-page.component';
 
 describe('DahsboardPageComponent', () => {
-  let component: DahsboardPageComponent;
-  let fixture: ComponentFixture<DahsboardPageComponent>;
+  let component: DashboardPageComponent;
+  let fixture: ComponentFixture<DashboardPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DahsboardPageComponent],
+      declarations: [DashboardPageComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DahsboardPageComponent);
+    fixture = TestBed.createComponent(DashboardPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
