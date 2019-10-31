@@ -6,10 +6,6 @@ import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule.forRoot(),
-  ],
+  imports: [CommonModule, environment.production ? [] : AkitaNgDevtools.forRoot(), AkitaNgRouterStoreModule.forRoot()],
 })
 export class CoreModule {}

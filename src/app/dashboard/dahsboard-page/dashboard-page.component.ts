@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Skill, SkillsQuery, SkillsService } from '../../skills/state';
+import { DeepSkill } from '../../skills/state';
+import { DashboardDataService } from '../dashboard-data/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -8,12 +9,13 @@ import { Skill, SkillsQuery, SkillsService } from '../../skills/state';
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-  skills$: Observable<Skill[]>;
+  skills$: Observable<DeepSkill[]>;
 
-  constructor(private skillsQuery: SkillsQuery, private skillsService: SkillsService) {}
+  constructor(private dashboardDataService: DashboardDataService) {
+  }
 
   ngOnInit() {
-    this.skillsService.loadList();
-    this.skills$ = this.skillsQuery.selectSkillList();
+    this.dashboardDataService.loadData();
+    this.skills$ = this.dashboardDataService.getData();
   }
 }
