@@ -1,5 +1,6 @@
 import { ID } from '@datorama/akita';
 import { Category } from '../../model/categories';
+import { Modify } from '../../shared/types';
 
 export interface Skill {
   id: ID;
@@ -8,14 +9,9 @@ export interface Skill {
   categories: ID[];
 }
 
-export interface SkillListResponse {
-  skills: { [id: string]: Skill };
-  categories: { [id: string]: Category };
-}
-
-export type DeepSkill = Skill & {
+export type DeepSkill = Modify<Skill, {
   categories: Category[];
-};
+}>;
 
 export function createSkill(params: Partial<Skill>) {
   return {

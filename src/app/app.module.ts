@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
+import { SharedModule } from './shared/shared.module';
 import { SkillsModule } from './skills/skills.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SkillsModule } from './skills/skills.module';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
+    SharedModule,
     AppRoutingModule,
     DashboardModule,
     ActivitiesModule,
