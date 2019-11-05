@@ -1,5 +1,5 @@
 <div>
-  <p>{{isSkillsLoading$ | async}}</p>
+  <p>{{ isSkillsLoading$ | async }}</p>
 
   <div *ngFor="let skill of skills$ | async">
     <h3>{{ skill.name }}</h3>
@@ -11,5 +11,17 @@
       <p>{{ category.id }}</p>
       <p>{{ category.isBaseCategory }}</p>
     </div>
+  </div>
+
+  <hr>
+
+  <div *ngFor="let activity of activities$ | async">
+    <p>{{activity.id}}</p>
+    <p>{{activity.addDate}}</p>
+    <p>{{activity.modifyDate}}</p>
+    <p>{{activity.title}}</p>
+    <p>{{activity.description}}</p>
+    <p>{{activity.category}}</p>
+    <p>{{activity.skill}}</p>
   </div>
 </div>

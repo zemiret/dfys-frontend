@@ -9,9 +9,10 @@ export interface Skill {
   categories: ID[];
 }
 
-export type DeepSkill = Modify<Skill, {
-  categories: Category[];
-}>;
+export type DeepSkill = Modify<Skill,
+  {
+    categories: Category[];
+  }>;
 
 export function createSkill(params: Partial<Skill>) {
   return {
