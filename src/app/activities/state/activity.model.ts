@@ -13,10 +13,11 @@ export interface Activity {
   skill: ID;
 }
 
-export type DeepActivity = Modify<Activity, {
-  category: Category,
-  skill: Skill,
-}>;
+export type DeepActivity = Modify<Activity,
+  {
+    category: Category;
+    skill: Skill;
+  }>;
 
 export function createActivity(params: Partial<Activity>) {
   return {

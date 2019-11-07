@@ -8,10 +8,7 @@ export interface ActivitiesState extends EntityState<Activity> {
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'activities' })
 export class ActivitiesStore extends EntityStore<ActivitiesState> {
-
   constructor() {
     super();
   }
-
 }
-

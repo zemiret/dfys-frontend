@@ -26,7 +26,7 @@ export class DashboardDataQuery {
           ...skill,
           categories: skill.categories.map(id => categories[id]),
         }));
-      }),
+      })
     );
   }
 }

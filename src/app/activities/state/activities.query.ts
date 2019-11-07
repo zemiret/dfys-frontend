@@ -9,10 +9,11 @@ import { Activity, DeepActivity } from './activity.model';
 
 @Injectable({ providedIn: 'root' })
 export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
-
-  constructor(protected store: ActivitiesStore,
-              protected categoriesQuery: CategoriesQuery,
-              protected skillsQuery: SkillsQuery) {
+  constructor(
+    protected store: ActivitiesStore,
+    protected categoriesQuery: CategoriesQuery,
+    protected skillsQuery: SkillsQuery,
+  ) {
     super(store);
   }
 
@@ -28,18 +29,18 @@ export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
   private deepenActivity(normalizedActivity: Observable<Activity>): Observable<DeepActivity> {
     return normalizedActivity.pipe(
       map(activity => {
-          return combineQueries([
-            this.categoriesQuery.selectEntity(activity.category),
-            this.skillsQuery.selectEntity(activity.skill),
-          ]).pipe(
-            map(([category, skill]) => ({
-              ...activity,
-              category,
-              skill,
-            })),
-          );
-        },
-      ),
-      flatMap(x => from(x)));
+        return combineQueries([
+          this.categoriesQuery.selectEntity(activity.category),
+          this.skillsQuery.selectEntity(activity.skill),
+        ]).pipe(
+          map(([category, skill]) => ({
+            ...activity,
+            category,
+            skill,
+          })),
+        );
+      }),
+      flatMap(x => from(x)),
+    );
   }
 }

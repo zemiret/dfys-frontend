@@ -4,9 +4,12 @@ import { async, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivitiesPageComponent } from './activities/activities-page/activities-page.component';
+import { AngularMaterialModule } from './angular-material.module';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ActivityCardComponent } from './dashboard/activity-card/activity-card.component';
 import { DashboardPageComponent } from './dashboard/dahsboard-page/dashboard-page.component';
+import { NavComponent } from './nav/nav.component';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 import { SkillsPageComponent } from './skills/skills-page/skills-page.component';
 
@@ -17,13 +20,15 @@ describe('routes', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule],
+      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule, AngularMaterialModule],
       declarations: [
         ActivitiesPageComponent,
         DashboardPageComponent,
         SettingsPageComponent,
         SkillsPageComponent,
         AppComponent,
+        NavComponent,
+        ActivityCardComponent,
       ],
     });
 

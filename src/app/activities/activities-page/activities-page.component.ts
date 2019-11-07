@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-activities-page',
+  selector: 'dfys-activities-page',
   templateUrl: './activities-page.component.html',
   styleUrls: ['./activities-page.component.scss'],
 })

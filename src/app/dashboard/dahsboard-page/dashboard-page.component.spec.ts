@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialModule } from '../../angular-material.module';
+import { ActivityCardComponent } from '../activity-card/activity-card.component';
 
 import { DashboardPageComponent } from './dashboard-page.component';
 
@@ -9,8 +11,8 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardPageComponent],
-      imports: [HttpClientTestingModule],
+      declarations: [DashboardPageComponent, ActivityCardComponent],
+      imports: [HttpClientTestingModule, AngularMaterialModule],
     }).compileComponents();
   }));
 

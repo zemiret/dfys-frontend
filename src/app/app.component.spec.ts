@@ -1,12 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AngularMaterialModule } from './angular-material.module';
 import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      imports: [RouterTestingModule, AngularMaterialModule],
+      declarations: [AppComponent, NavComponent],
     }).compileComponents();
   }));
 

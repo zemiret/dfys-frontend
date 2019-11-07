@@ -20,7 +20,7 @@ export class DashboardDataService {
         finalize(() => {
           this.skillsStore.setLoading(false);
           this.categoriesStore.setLoading(false);
-        }),
+        })
       )
       .subscribe(data => {
         this.skillsStore.set(data.skills);

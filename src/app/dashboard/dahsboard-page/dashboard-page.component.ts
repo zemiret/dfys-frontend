@@ -5,7 +5,7 @@ import { DeepSkill } from '../../skills/state';
 import { DashboardDataQuery, DashboardDataService } from '../state';
 
 @Component({
-  selector: 'app-dashboard-page',
+  selector: 'dfys-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss'],
 })
@@ -15,10 +15,12 @@ export class DashboardPageComponent implements OnInit {
   skills$: Observable<DeepSkill[]>;
   activities$: Observable<DeepActivity[]>;
 
-  constructor(private dashboardDataService: DashboardDataService,
-              private dashboardDataQuery: DashboardDataQuery,
-              private activitiesService: ActivitiesService,
-              private activitiesQuery: ActivitiesQuery) {
+  constructor(
+    private dashboardDataService: DashboardDataService,
+    private dashboardDataQuery: DashboardDataQuery,
+    private activitiesService: ActivitiesService,
+    private activitiesQuery: ActivitiesQuery,
+  ) {
   }
 
   ngOnInit() {
