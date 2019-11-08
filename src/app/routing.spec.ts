@@ -9,7 +9,8 @@ import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActivityCardComponent } from './dashboard/activity-card/activity-card.component';
 import { DashboardPageComponent } from './dashboard/dahsboard-page/dashboard-page.component';
-import { NavComponent } from './nav/nav.component';
+import { SkillsSidebarComponent } from './dashboard/skills-sidebar/skills-sidebar.component';
+import { LayoutComponent } from './layout/layout.component';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 import { SkillsPageComponent } from './skills/skills-page/skills-page.component';
 
@@ -20,15 +21,20 @@ describe('routes', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule, AngularMaterialModule],
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        HttpClientTestingModule,
+        AngularMaterialModule,
+      ],
       declarations: [
         ActivitiesPageComponent,
         DashboardPageComponent,
         SettingsPageComponent,
         SkillsPageComponent,
         AppComponent,
-        NavComponent,
+        LayoutComponent,
         ActivityCardComponent,
+        SkillsSidebarComponent,
       ],
     });
 

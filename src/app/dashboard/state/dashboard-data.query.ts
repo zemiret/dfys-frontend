@@ -7,12 +7,20 @@ import { DeepSkill, SkillsQuery } from '../../skills/state';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardDataQuery {
-  constructor(private skillsQuery: SkillsQuery, private categoriesQuery: CategoriesQuery) {
-  }
+  constructor(
+    private skillsQuery: SkillsQuery,
+    private categoriesQuery: CategoriesQuery
+  ) {}
 
   selectSkillsLoading(): Observable<boolean> {
-    return zip(this.skillsQuery.selectLoading(), this.categoriesQuery.selectLoading()).pipe(
-      map(([skillsLoading, categoriesLoading]) => skillsLoading && categoriesLoading),
+    return zip(
+      this.skillsQuery.selectLoading(),
+      this.categoriesQuery.selectLoading()
+    ).pipe(
+      map(
+        ([skillsLoading, categoriesLoading]) =>
+          skillsLoading && categoriesLoading
+      )
     );
   }
 

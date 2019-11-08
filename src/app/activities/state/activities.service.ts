@@ -7,8 +7,10 @@ import { Activity } from './activity.model';
 
 @Injectable({ providedIn: 'root' })
 export class ActivitiesService {
-  constructor(private activitiesStore: ActivitiesStore, private http: HttpClient) {
-  }
+  constructor(
+    private activitiesStore: ActivitiesStore,
+    private http: HttpClient
+  ) {}
 
   loadRecent() {
     this.activitiesStore.setLoading(true);

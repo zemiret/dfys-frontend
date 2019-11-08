@@ -7,8 +7,11 @@ import { SkillResponse } from './dashboard-data.model';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardDataService {
-  constructor(private http: HttpClient, private skillsStore: SkillsStore, private categoriesStore: CategoriesStore) {
-  }
+  constructor(
+    private http: HttpClient,
+    private skillsStore: SkillsStore,
+    private categoriesStore: CategoriesStore
+  ) {}
 
   loadSkills() {
     this.skillsStore.setLoading(true);

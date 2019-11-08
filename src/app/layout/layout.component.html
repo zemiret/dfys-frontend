@@ -1,0 +1,25 @@
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z2">
+      <a class="color-white" [routerLink]="['/']">
+        <mat-icon
+          svgIcon="home"
+          aria-hidden="false"
+          aria-label="Settings page icon"
+        ></mat-icon>
+      </a>
+      <span class="fill-space"></span>
+      <a class="color-white" [routerLink]="['/settings']">
+        <mat-icon
+          svgIcon="settings"
+          aria-hidden="false"
+          aria-label="Settings page icon"
+        ></mat-icon>
+      </a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="layout-content-container">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

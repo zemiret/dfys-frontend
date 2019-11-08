@@ -7,13 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { NavComponent } from './nav/nav.component';
+import { LayoutComponent } from './layout/layout.component';
 import { SettingsModule } from './settings/settings.module';
 import { SharedModule } from './shared/shared.module';
 import { SkillsModule } from './skills/skills.module';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent],
+  declarations: [AppComponent, LayoutComponent],
   imports: [
     CommonModule,
     CoreModule,

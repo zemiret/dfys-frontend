@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule,
   MatCardModule,
@@ -9,6 +10,7 @@ import {
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatTreeModule,
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +24,8 @@ const materialModules = [
   MatIconModule,
   MatListModule,
   MatCardModule,
+  MatTreeModule,
+  FlexLayoutModule,
 ];
 
 @NgModule({
@@ -30,8 +34,17 @@ const materialModules = [
   exports: materialModules,
 })
 export class AngularMaterialModule {
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-    matIconRegistry.addSvgIcon('settings', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/settings.svg'));
-    matIconRegistry.addSvgIcon('home', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/home.svg'));
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    matIconRegistry.addSvgIcon(
+      'settings',
+      domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/settings.svg')
+    );
+    matIconRegistry.addSvgIcon(
+      'home',
+      domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/home.svg')
+    );
   }
 }

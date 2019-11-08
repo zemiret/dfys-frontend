@@ -6,7 +6,10 @@ import { CategoryMap } from './category.model';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesService {
-  constructor(private categoriesStore: CategoriesStore, private http: HttpClient) {}
+  constructor(
+    private categoriesStore: CategoriesStore,
+    private http: HttpClient
+  ) {}
 
   loadList() {
     this.categoriesStore.setLoading(true);

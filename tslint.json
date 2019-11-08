@@ -68,7 +68,8 @@
     "object-literal-sort-keys": false,
     "ordered-imports": true,
 	"quotemark": [true, "single"],
-	"trailing-comma": [
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "trailing-comma": [
       true,
       {
         "multiline": {

@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.layout-container {
+  height: 100%;
+}
+
+.layout-content-container {
+  height: calc(100% - 64px);
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

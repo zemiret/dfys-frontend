@@ -9,9 +9,7 @@ import { DeepActivity } from '../../activities/state';
 export class ActivityCardComponent implements OnInit {
   @Input() activity: DeepActivity;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

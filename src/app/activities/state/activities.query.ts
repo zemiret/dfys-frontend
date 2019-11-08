@@ -12,7 +12,7 @@ export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
   constructor(
     protected store: ActivitiesStore,
     protected categoriesQuery: CategoriesQuery,
-    protected skillsQuery: SkillsQuery,
+    protected skillsQuery: SkillsQuery
   ) {
     super(store);
   }
@@ -22,11 +22,13 @@ export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
       flatMap(x => x),
       map(activity => this.deepenActivity(of(activity))),
       mergeAll(),
-      scan<DeepActivity>((acc, val) => acc.concat(val), []),
+      scan<DeepActivity>((acc, val) => acc.concat(val), [])
     );
   }
 
-  private deepenActivity(normalizedActivity: Observable<Activity>): Observable<DeepActivity> {
+  private deepenActivity(
+    normalizedActivity: Observable<Activity>
+  ): Observable<DeepActivity> {
     return normalizedActivity.pipe(
       map(activity => {
         return combineQueries([
@@ -37,10 +39,10 @@ export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
             ...activity,
             category,
             skill,
-          })),
+          }))
         );
       }),
-      flatMap(x => from(x)),
+      flatMap(x => from(x))
     );
   }
 }
