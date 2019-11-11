@@ -1,9 +1,6 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-} from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { DeepSkill } from '../../skills/state';
 
 /**

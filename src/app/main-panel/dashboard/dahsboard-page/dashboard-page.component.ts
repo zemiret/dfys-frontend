@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  ActivitiesQuery,
-  ActivitiesService,
-  DeepActivity,
-} from '../../activities/state';
+import { ActivitiesQuery, ActivitiesService, DeepActivity } from '../../activities/state';
 import { DeepSkill } from '../../skills/state';
 import { DashboardDataQuery, DashboardDataService } from '../state';
 

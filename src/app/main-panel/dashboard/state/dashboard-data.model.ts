@@ -1,4 +1,4 @@
-import { Category } from '../../model/categories';
+import { Category } from '@model/categories';
 import { Skill } from '../../skills/state';
 
 export interface SkillResponse {

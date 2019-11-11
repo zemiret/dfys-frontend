@@ -1,6 +1,6 @@
 import { ID } from '@datorama/akita';
-import { Category } from '../../model/categories';
-import { Modify } from '../../shared/types';
+import { Category } from '@model/categories';
+import { Modify } from '@shared/types';
 import { Skill } from '../../skills/state';
 
 export interface Activity {

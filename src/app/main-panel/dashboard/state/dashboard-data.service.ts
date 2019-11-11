@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CategoriesStore } from '@model/categories';
 import { finalize } from 'rxjs/operators';
-import { CategoriesStore } from '../../model/categories';
 import { SkillsStore } from '../../skills/state';
 import { SkillResponse } from './dashboard-data.model';
 

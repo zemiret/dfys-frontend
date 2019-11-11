@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivitiesPageComponent } from './activities/activities-page/activities-page.component';
-import { DashboardPageComponent } from './dashboard/dahsboard-page/dashboard-page.component';
-import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
-import { SkillsPageComponent } from './skills/skills-page/skills-page.component';
+import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
+import { DashboardPageComponent } from '@app/main-panel/dashboard/dahsboard-page/dashboard-page.component';
+import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
+import { SettingsPageComponent } from '@app/settings/settings-page/settings-page.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardPageComponent },

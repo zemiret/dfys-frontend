@@ -3,16 +3,16 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ActivitiesPageComponent } from './activities/activities-page/activities-page.component';
-import { AngularMaterialModule } from './angular-material.module';
+import { AngularMaterialModule } from '@app/angular-material.module';
+import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
+import { ActivityCardComponent } from '@app/main-panel/dashboard/activity-card/activity-card.component';
+import { DashboardPageComponent } from '@app/main-panel/dashboard/dahsboard-page/dashboard-page.component';
+import { SkillsSidebarComponent } from '@app/main-panel/dashboard/skills-sidebar/skills-sidebar.component';
+import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ActivityCardComponent } from './dashboard/activity-card/activity-card.component';
-import { DashboardPageComponent } from './dashboard/dahsboard-page/dashboard-page.component';
-import { SkillsSidebarComponent } from './dashboard/skills-sidebar/skills-sidebar.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
-import { SkillsPageComponent } from './skills/skills-page/skills-page.component';
 
 describe('routes', () => {
   let router: Router;

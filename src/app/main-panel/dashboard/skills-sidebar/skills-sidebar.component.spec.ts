@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularMaterialModule } from '../../angular-material.module';
+import { AngularMaterialModule } from '@app/angular-material.module';
 
-import { ActivityCardComponent } from './activity-card.component';
+import { SkillsSidebarComponent } from './skills-sidebar.component';
 
-describe('ActivityCardComponent', () => {
-  let component: ActivityCardComponent;
-  let fixture: ComponentFixture<ActivityCardComponent>;
+describe('SkillsSidebarComponent', () => {
+  let component: SkillsSidebarComponent;
+  let fixture: ComponentFixture<SkillsSidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [SkillsSidebarComponent],
       imports: [AngularMaterialModule],
-      declarations: [ActivityCardComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActivityCardComponent);
+    fixture = TestBed.createComponent(SkillsSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

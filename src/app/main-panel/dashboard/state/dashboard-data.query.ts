@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { combineQueries } from '@datorama/akita';
+import { CategoriesQuery } from '@model/categories';
 import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CategoriesQuery } from '../../model/categories';
 import { DeepSkill, SkillsQuery } from '../../skills/state';
 
 @Injectable({ providedIn: 'root' })

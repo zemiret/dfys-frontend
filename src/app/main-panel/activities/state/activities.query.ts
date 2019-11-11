@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { combineQueries, QueryEntity } from '@datorama/akita';
+import { CategoriesQuery } from '@model/categories';
 import { from, Observable, of } from 'rxjs';
 import { flatMap, map, mergeAll, scan } from 'rxjs/operators';
-import { CategoriesQuery } from '../../model/categories';
 import { SkillsQuery } from '../../skills/state';
 import { ActivitiesState, ActivitiesStore } from './activities.store';
 import { Activity, DeepActivity } from './activity.model';
