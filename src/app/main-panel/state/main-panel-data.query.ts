@@ -3,10 +3,10 @@ import { combineQueries } from '@datorama/akita';
 import { CategoriesQuery } from '@model/categories';
 import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DeepSkill, SkillsQuery } from '../../skills/state';
+import { DeepSkill, SkillsQuery } from '../skills/state';
 
 @Injectable({ providedIn: 'root' })
-export class DashboardDataQuery {
+export class MainPanelDataQuery {
   constructor(
     private skillsQuery: SkillsQuery,
     private categoriesQuery: CategoriesQuery

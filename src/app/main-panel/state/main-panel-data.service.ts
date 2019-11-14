@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoriesStore } from '@model/categories';
 import { finalize } from 'rxjs/operators';
-import { SkillsStore } from '../../skills/state';
-import { SkillResponse } from './dashboard-data.model';
+import { SkillsStore } from '../skills/state';
+import { SkillResponse } from './main-panel-data.model';
 
 @Injectable({ providedIn: 'root' })
-export class DashboardDataService {
+export class MainPanelDataService {
   constructor(
     private http: HttpClient,
     private skillsStore: SkillsStore,

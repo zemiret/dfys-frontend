@@ -1,5 +1,5 @@
+import { Skill } from '@app/main-panel/skills/state';
 import { Category } from '@model/categories';
-import { Skill } from '../../skills/state';
 
 export interface SkillResponse {
   skills: Skill[];

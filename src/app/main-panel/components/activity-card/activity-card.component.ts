@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DeepActivity } from '../../activities/state';
+import { DeepActivity } from '@app/main-panel/activities/state';
 
 @Component({
   selector: 'dfys-activity-card',

@@ -1,0 +1,17 @@
+<div
+    fxLayout="row"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="20px"
+    fxLayout.lt-sm="column"
+    class="container"
+>
+  <dfys-skills-sidebar
+      fxFlex="1 0 300px"
+      fxFlex.lt-sm="0 1 auto"
+      [skills]="skills$ | async"
+  ></dfys-skills-sidebar>
+
+  <div fxFlexFill fxFlex="1 1 auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>
