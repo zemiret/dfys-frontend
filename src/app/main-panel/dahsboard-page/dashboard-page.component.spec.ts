@@ -11,10 +11,7 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        DashboardPageComponent,
-        ActivityCardComponent,
-      ],
+      declarations: [DashboardPageComponent, ActivityCardComponent],
       imports: [HttpClientTestingModule, AngularMaterialModule],
     }).compileComponents();
   }));

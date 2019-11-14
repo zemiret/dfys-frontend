@@ -16,7 +16,7 @@ export class MainPanelPageComponent implements OnInit {
   constructor(
     private mainPanelDataService: MainPanelDataService,
     private mainPanelDataQuery: MainPanelDataQuery
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.mainPanelDataService.loadSkills();
@@ -24,5 +24,4 @@ export class MainPanelPageComponent implements OnInit {
     this.isSkillsLoading$ = this.mainPanelDataQuery.selectSkillsLoading();
     this.skills$ = this.mainPanelDataQuery.selectSkills();
   }
-
 }

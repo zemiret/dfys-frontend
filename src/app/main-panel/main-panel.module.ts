@@ -9,7 +9,18 @@ import { MainPanelPageComponent } from './main-panel-page/main-panel-page.compon
 import { SkillsModule } from './skills/skills.module';
 
 @NgModule({
-  declarations: [SkillsSidebarComponent, MainPanelPageComponent, ActivityCardComponent, DashboardPageComponent],
-  imports: [CommonModule, ActivitiesModule, SkillsModule, AngularMaterialModule, MainPanelRoutingModule],
+  declarations: [
+    SkillsSidebarComponent,
+    MainPanelPageComponent,
+    ActivityCardComponent,
+    DashboardPageComponent,
+  ],
+  imports: [
+    CommonModule,
+    ActivitiesModule,
+    SkillsModule,
+    AngularMaterialModule,
+    MainPanelRoutingModule,
+  ],
 })
 export class MainPanelModule {}

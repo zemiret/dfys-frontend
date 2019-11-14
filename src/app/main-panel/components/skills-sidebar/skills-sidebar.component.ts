@@ -4,42 +4,21 @@ import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from '@angular/material/tree';
+import { SubscriptionHandler } from '@shared/subscription-handler';
+import { Observable } from 'rxjs';
 import { DeepSkill } from '../../skills/state';
 
-/**
- * Food data with nested structure.
- * Each node has a name and an optiona list of children.
- */
-interface FoodNode {
+interface SkillNode {
   name: string;
-  children?: FoodNode[];
+  link: string;
+  children: SkillNode[];
 }
 
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
-  },
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussel sprouts' }],
-      },
-      {
-        name: 'Orange',
-        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
-      },
-    ],
-  },
-];
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
+interface SkillFlatNode {
   name: string;
+  link: string;
   level: number;
+  expandable: boolean;
 }
 
 @Component({
@@ -47,28 +26,19 @@ interface ExampleFlatNode {
   templateUrl: './skills-sidebar.component.html',
   styleUrls: ['./skills-sidebar.component.scss'],
 })
-export class SkillsSidebarComponent implements OnInit {
-  @Input() skills: DeepSkill[];
+export class SkillsSidebarComponent extends SubscriptionHandler
+  implements OnInit {
+  @Input() skills$: Observable<DeepSkill[]>;
 
   constructor() {
-    this.dataSource.data = TREE_DATA;
+    super();
   }
 
-  private transformer = (node: FoodNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level,
-    };
-  };
-
-  // tslint:disable-next-line
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<SkillFlatNode>(
     node => node.level,
     node => node.expandable
   );
 
-  // tslint:disable-next-line
   treeFlattener = new MatTreeFlattener(
     this.transformer,
     node => node.level,
@@ -76,10 +46,36 @@ export class SkillsSidebarComponent implements OnInit {
     node => node.children
   );
 
-  // tslint:disable-next-line
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: SkillFlatNode) => node.expandable;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadTreeData();
+  }
+
+  private transformer(node: SkillNode, level: number): SkillFlatNode {
+    return {
+      expandable: !!node.children && node.children.length > 0,
+      name: node.name,
+      link: node.link,
+      level,
+    };
+  }
+
+  private loadTreeData(): void {
+    this.addSubscription(
+      this.skills$.subscribe(deepSkills => {
+        this.dataSource.data = deepSkills.map(skill => ({
+          name: skill.name,
+          link: `skills/${skill.id}`,
+          children: skill.categories.map(cat => ({
+            name: cat.name,
+            link: `skills/${skill.id}`, // TODO: Extend this to filter by category
+            children: [],
+          })),
+        }));
+      })
+    );
+  }
 }

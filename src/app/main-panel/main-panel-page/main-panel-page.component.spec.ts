@@ -13,9 +13,12 @@ describe('MainPanelPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MainPanelPageComponent, SkillsSidebarComponent],
-      imports: [RouterTestingModule, AngularMaterialModule, HttpClientTestingModule],
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule,
+        AngularMaterialModule,
+        HttpClientTestingModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

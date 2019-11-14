@@ -58,21 +58,27 @@ describe('routes', () => {
     expect(location.path()).toBe('/settings');
   });
 
-  it('navigation to skills should lead to skills', async () => {
-    await router.navigate(['/main-panel/skills', '12']);
-    expect(location.path()).toBe('/main-panel/skills/12');
+  it('navigation to skills$ should lead to skills$', async () => {
+    await router.navigate(['/main-panel/skills$', '12']);
+    expect(location.path()).toBe('/main-panel/skills$/12');
   });
 
   it('navigation to activities should lead to activities', async () => {
-    await router.navigate(['/main-panel/skills', '12', 'activities', '11']);
-    expect(location.path()).toBe('/main-panel/skills/12/activities/11');
+    await router.navigate(['/main-panel/skills$', '12', 'activities', '11']);
+    expect(location.path()).toBe('/main-panel/skills$/12/activities/11');
   });
 
   it('navigation to non existing routes should display page not found', async () => {
-    await router.navigate(['some-stupid', 'inherently wrong', 'routeasjdbaksjhdksaj123123']);
+    await router.navigate([
+      'some-stupid',
+      'inherently wrong',
+      'routeasjdbaksjhdksaj123123',
+    ]);
 
     const appElement: HTMLElement = fixture.debugElement.nativeElement;
-    const pageNotFoundEl: HTMLElement = appElement.querySelector('dfys-page-not-found');
+    const pageNotFoundEl: HTMLElement = appElement.querySelector(
+      'dfys-page-not-found'
+    );
 
     expect(pageNotFoundEl).toBeTruthy();
   });
