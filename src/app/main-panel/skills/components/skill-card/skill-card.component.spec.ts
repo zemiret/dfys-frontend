@@ -12,8 +12,7 @@ describe('SkillCardComponent', () => {
     TestBed.configureTestingModule({
       imports: [AngularMaterialModule, SharedModule],
       declarations: [SkillCardComponent],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

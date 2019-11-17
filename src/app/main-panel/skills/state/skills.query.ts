@@ -9,10 +9,12 @@ import { SkillsState, SkillsStore } from './skills.store';
 
 @Injectable({ providedIn: 'root' })
 export class SkillsQuery extends QueryEntity<SkillsState> {
-  constructor(protected store: SkillsStore,
-              private routerQuery: RouterQuery,
-              private activitiesQuery: ActivitiesQuery,
-              private categoriesQuery: CategoriesQuery) {
+  constructor(
+    protected store: SkillsStore,
+    private routerQuery: RouterQuery,
+    private activitiesQuery: ActivitiesQuery,
+    private categoriesQuery: CategoriesQuery
+  ) {
     super(store);
   }
 
@@ -35,13 +37,9 @@ export class SkillsQuery extends QueryEntity<SkillsState> {
   selectSkillActivities(skillId: ID, categoryId?: ID) {
     // TODO: FIX THIS!
     // For some reason filtering the activity to skill leaves us with empty list.
-    const filters = [
-      activity => activity.skill === skillId,
-    ];
+    const filters = [activity => activity.skill === skillId];
     if (categoryId) {
-      filters.push(
-        activity => activity.category === categoryId
-      );
+      filters.push(activity => activity.category === categoryId);
     }
 
     return this.activitiesQuery.selectAll({

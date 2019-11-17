@@ -11,12 +11,10 @@ export class SkillCardComponent implements OnInit {
   @Input() activities: Activity[];
   @Input() category: Category;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     console.log(this.activities);
     console.log(this.category);
   }
-
 }

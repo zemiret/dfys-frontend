@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivitiesStore } from '@app/main-panel/activities/state';
-import { createSkill, SkillResponse } from '@app/main-panel/skills/state/skill.model';
+import {
+  createSkill,
+  SkillResponse,
+} from '@app/main-panel/skills/state/skill.model';
 import { SkillListResponse } from '@app/main-panel/state';
 import { ID } from '@datorama/akita';
 import { CategoriesStore } from '@model/categories';
@@ -10,10 +13,12 @@ import { SkillsStore } from './skills.store';
 
 @Injectable({ providedIn: 'root' })
 export class SkillsService {
-  constructor(private skillsStore: SkillsStore,
-              private categoriesStore: CategoriesStore,
-              private activitiesStore: ActivitiesStore,
-              private http: HttpClient) {}
+  constructor(
+    private skillsStore: SkillsStore,
+    private categoriesStore: CategoriesStore,
+    private activitiesStore: ActivitiesStore,
+    private http: HttpClient
+  ) {}
 
   loadSkills() {
     this.skillsStore.setLoading(true);
@@ -30,7 +35,8 @@ export class SkillsService {
           this.skillsStore.setLoading(false);
           this.categoriesStore.setLoading(false);
         })
-      ).subscribe();
+      )
+      .subscribe();
   }
 
   loadSkill(id: ID) {
@@ -42,11 +48,13 @@ export class SkillsService {
       .get<SkillResponse>(`api/skills/${id}`)
       .pipe(
         tap(data => {
-          this.skillsStore.add(createSkill({
-            id: data.id,
-            name: data.name,
-            addDate: data.addDate,
-          }));
+          this.skillsStore.add(
+            createSkill({
+              id: data.id,
+              name: data.name,
+              addDate: data.addDate,
+            })
+          );
 
           Object.keys(data.categories).forEach(key => {
             this.categoriesStore.add(data.categories[key]);
@@ -61,6 +69,7 @@ export class SkillsService {
           this.categoriesStore.setLoading(false);
           this.activitiesStore.setLoading(false);
         })
-      ).subscribe();
+      )
+      .subscribe();
   }
 }

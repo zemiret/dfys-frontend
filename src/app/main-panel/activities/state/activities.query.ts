@@ -4,9 +4,7 @@ import { ActivitiesState, ActivitiesStore } from './activities.store';
 
 @Injectable({ providedIn: 'root' })
 export class ActivitiesQuery extends QueryEntity<ActivitiesState> {
-  constructor(
-    protected store: ActivitiesStore
-  ) {
+  constructor(protected store: ActivitiesStore) {
     super(store);
   }
 }

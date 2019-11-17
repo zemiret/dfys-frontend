@@ -23,7 +23,6 @@ import { SkillsModule } from './skills/skills.module';
     AngularMaterialModule,
     MainPanelRoutingModule,
   ],
-  exports: [
-  ],
+  exports: [],
 })
 export class MainPanelModule {}

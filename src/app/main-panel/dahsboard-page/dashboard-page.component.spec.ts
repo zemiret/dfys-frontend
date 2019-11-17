@@ -14,8 +14,16 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardPageComponent, ActivityCardComponent, SkillCardComponent],
-      imports: [HttpClientTestingModule, AngularMaterialModule, RouterTestingModule],
+      declarations: [
+        DashboardPageComponent,
+        ActivityCardComponent,
+        SkillCardComponent,
+      ],
+      imports: [
+        HttpClientTestingModule,
+        AngularMaterialModule,
+        RouterTestingModule,
+      ],
       providers: [RouterQuery],
     }).compileComponents();
   }));

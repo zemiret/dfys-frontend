@@ -4,7 +4,8 @@ import { CategoriesQuery } from '@model/categories';
 import { Observable } from 'rxjs';
 import {
   ActivitiesQuery,
-  ActivitiesService, Activity,
+  ActivitiesService,
+  Activity,
 } from '../activities/state';
 
 @Component({

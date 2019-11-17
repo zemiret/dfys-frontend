@@ -23,10 +23,10 @@ export interface SkillResponse {
   addDate: string;
   name: string;
   categories: {
-    [id in ID]: Category
+    [id in ID]: Category;
   };
   activities: {
-    [id in ID]: Activity
+    [id in ID]: Activity;
   };
 }
 

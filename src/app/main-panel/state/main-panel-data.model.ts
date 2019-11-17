@@ -5,4 +5,3 @@ export interface SkillListResponse {
   skills: Skill[];
   categories: Category[];
 }
-

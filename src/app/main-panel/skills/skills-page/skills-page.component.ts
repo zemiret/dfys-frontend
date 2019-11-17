@@ -16,21 +16,24 @@ export class SkillsPageComponent extends SubscriptionHandler implements OnInit {
   categories$: Observable<Category[]>;
   id: ID;
 
-  constructor(private skillsQuery: SkillsQuery,
-              private routerQuery: RouterQuery,
-              private skillService: SkillsService) {
+  constructor(
+    private skillsQuery: SkillsQuery,
+    private routerQuery: RouterQuery,
+    private skillService: SkillsService
+  ) {
     super();
   }
 
   ngOnInit() {
     this.addSubscription(
-      this.routerQuery.selectParams<ID>('id').pipe(
-        filter(id => id != null)
-      ).subscribe(id => {
-        this.skillService.loadSkill(id);
-        this.categories$ = this.skillsQuery.selectSkillCategories(id);
-        this.id = id;
-      })
+      this.routerQuery
+        .selectParams<ID>('id')
+        .pipe(filter(id => id != null))
+        .subscribe(id => {
+          this.skillService.loadSkill(id);
+          this.categories$ = this.skillsQuery.selectSkillCategories(id);
+          this.id = id;
+        })
     );
   }
 

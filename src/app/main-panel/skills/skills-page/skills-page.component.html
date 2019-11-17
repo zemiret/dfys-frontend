@@ -1,14 +1,10 @@
-<div
-  fxLayout="row"
-  fxLayoutGap="20px"
-  fxLayout.lt-sm="column"
-  >
+<div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
   <dfys-skill-card
-      fxFlex="1 0 300px"
-      fxFlex.lt-sm="0 1 auto"
-      *ngFor="let category of categories$ | async"
-      [category]="category"
-      [activities]="selectActivitiesForCategory(category) | async"
+    fxFlex="1 0 300px"
+    fxFlex.lt-sm="0 1 auto"
+    *ngFor="let category of categories$ | async"
+    [category]="category"
+    [activities]="selectActivitiesForCategory(category) | async"
   >
   </dfys-skill-card>
 </div>

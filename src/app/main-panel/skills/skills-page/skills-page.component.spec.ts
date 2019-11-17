@@ -14,7 +14,11 @@ describe('SkillsPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AngularMaterialModule, HttpClientTestingModule],
-      declarations: [SkillsPageComponent, SkillCardComponent, ActivityCardComponent],
+      declarations: [
+        SkillsPageComponent,
+        SkillCardComponent,
+        ActivityCardComponent,
+      ],
       providers: [RouterQuery],
     }).compileComponents();
   }));
