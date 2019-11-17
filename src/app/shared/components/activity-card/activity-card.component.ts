@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DeepActivity } from '@app/main-panel/activities/state';
+import { Activity } from '@app/main-panel/activities/state';
+import { Skill } from '@app/main-panel/skills/state';
+import { Category } from '@model/categories';
 
 @Component({
   selector: 'dfys-activity-card',
@@ -7,7 +9,9 @@ import { DeepActivity } from '@app/main-panel/activities/state';
   styleUrls: ['./activity-card.component.scss'],
 })
 export class ActivityCardComponent implements OnInit {
-  @Input() activity: DeepActivity;
+  @Input() activity: Activity;
+  @Input() category: Category;
+  @Input() skill?: Skill;
 
   constructor() {}
 

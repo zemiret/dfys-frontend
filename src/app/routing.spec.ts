@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
-import { ActivityCardComponent } from '@app/main-panel/components';
 import { SkillsSidebarComponent } from '@app/main-panel/components/skills-sidebar/skills-sidebar.component';
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
+import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { ActivityCardComponent } from '@shared/components';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -37,6 +38,7 @@ describe('routes', () => {
         ActivityCardComponent,
         SkillsSidebarComponent,
         PageNotFoundComponent,
+        SkillCardComponent,
       ],
     }).compileComponents();
 

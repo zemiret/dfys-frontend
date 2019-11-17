@@ -1,8 +1,14 @@
 <div class="activity-card-container">
-  <dfys-activity-card
-    *ngFor="let activity of activities$ | async"
-    class="activity-card"
-    [activity]="activity"
-  >
-  </dfys-activity-card>
+	<a *ngFor="let activity of activities$ | async"
+		 [routerLink]="['activities',  activity.id]"
+	>
+    <dfys-activity-card
+      class="activity-card"
+      [activity]="activity"
+      [skill]="selectSkillForActivity(activity) | async"
+			[category]="selectCategoryForActivity(activity) | async"
+    >
+    </dfys-activity-card>
+	</a>
+
 </div>

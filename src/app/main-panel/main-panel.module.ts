@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
 import { MainPanelRoutingModule } from '@app/main-panel/main-panel-routing.module';
+import { SharedModule } from '@shared/shared.module';
 import { ActivitiesModule } from './activities/activities.module';
-import { ActivityCardComponent, SkillsSidebarComponent } from './components';
+import { SkillsSidebarComponent } from './components';
 import { MainPanelPageComponent } from './main-panel-page/main-panel-page.component';
 import { SkillsModule } from './skills/skills.module';
 
@@ -12,15 +13,17 @@ import { SkillsModule } from './skills/skills.module';
   declarations: [
     SkillsSidebarComponent,
     MainPanelPageComponent,
-    ActivityCardComponent,
     DashboardPageComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ActivitiesModule,
     SkillsModule,
     AngularMaterialModule,
     MainPanelRoutingModule,
+  ],
+  exports: [
   ],
 })
 export class MainPanelModule {}

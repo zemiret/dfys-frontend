@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 
-import { ActivityCardComponent } from './activity-card.component';
+import { ActivityCardComponent } from '@shared/components';
 
 describe('ActivityCardComponent', () => {
   let component: ActivityCardComponent;
@@ -9,7 +10,7 @@ describe('ActivityCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AngularMaterialModule],
+      imports: [AngularMaterialModule, RouterTestingModule],
       declarations: [ActivityCardComponent],
     }).compileComponents();
   }));

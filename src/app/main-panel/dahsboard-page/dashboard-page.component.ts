@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { SkillsQuery } from '@app/main-panel/skills/state';
+import { CategoriesQuery } from '@model/categories';
 import { Observable } from 'rxjs';
 import {
   ActivitiesQuery,
-  ActivitiesService,
-  DeepActivity,
+  ActivitiesService, Activity,
 } from '../activities/state';
 
 @Component({
@@ -13,17 +14,27 @@ import {
 })
 export class DashboardPageComponent implements OnInit {
   isActivitiesLoading$: Observable<boolean>;
-  activities$: Observable<DeepActivity[]>;
+  activities$: Observable<Activity[]>;
 
   constructor(
     private activitiesService: ActivitiesService,
-    private activitiesQuery: ActivitiesQuery
+    private activitiesQuery: ActivitiesQuery,
+    private skillsQuery: SkillsQuery,
+    private categoriesQuery: CategoriesQuery
   ) {}
 
   ngOnInit() {
     this.activitiesService.loadRecent();
 
     this.isActivitiesLoading$ = this.activitiesQuery.selectLoading();
-    this.activities$ = this.activitiesQuery.selectDeepActivityList();
+    this.activities$ = this.activitiesQuery.selectAll();
+  }
+
+  private selectSkillForActivity(activity: Activity) {
+    return this.skillsQuery.selectEntity(activity.skill);
+  }
+
+  private selectCategoryForActivity(activity: Activity) {
+    return this.categoriesQuery.selectEntity(activity.category);
   }
 }

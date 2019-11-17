@@ -1,4 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialModule } from '@app/angular-material.module';
+import { SkillCardComponent } from '@app/main-panel/skills/components';
+import { RouterQuery } from '@datorama/akita-ng-router-store';
+import { ActivityCardComponent } from '@shared/components';
 
 import { SkillsPageComponent } from './skills-page.component';
 
@@ -8,7 +13,9 @@ describe('SkillsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SkillsPageComponent],
+      imports: [AngularMaterialModule, HttpClientTestingModule],
+      declarations: [SkillsPageComponent, SkillCardComponent, ActivityCardComponent],
+      providers: [RouterQuery],
     }).compileComponents();
   }));
 

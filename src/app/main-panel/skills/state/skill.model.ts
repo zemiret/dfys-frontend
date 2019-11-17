@@ -1,8 +1,8 @@
+import { Activity } from '@app/main-panel/activities/state';
 import { ID } from '@datorama/akita';
 import { Category } from '@model/categories';
-// import { Category } from '@model/categories';
-// import { Modify } from '@shared/types';
 import { Modify } from '@shared/types';
+import { Observable } from 'rxjs';
 
 export interface Skill {
   id: ID;
@@ -17,6 +17,18 @@ export type DeepSkill = Modify<
     categories: Category[];
   }
 >;
+
+export interface SkillResponse {
+  id: ID;
+  addDate: string;
+  name: string;
+  categories: {
+    [id in ID]: Category
+  };
+  activities: {
+    [id in ID]: Activity
+  };
+}
 
 export function createSkill(params: Partial<Skill>) {
   return {

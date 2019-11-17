@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeepSkill } from '@app/main-panel/skills/state';
+import { DeepSkill, SkillsService } from '@app/main-panel/skills/state';
 import { MainPanelDataQuery } from '@app/main-panel/state/main-panel-data.query';
-import { MainPanelDataService } from '@app/main-panel/state/main-panel-data.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,12 +13,12 @@ export class MainPanelPageComponent implements OnInit {
   skills$: Observable<DeepSkill[]>;
 
   constructor(
-    private mainPanelDataService: MainPanelDataService,
+    private skillsService: SkillsService,
     private mainPanelDataQuery: MainPanelDataQuery
   ) {}
 
   ngOnInit() {
-    this.mainPanelDataService.loadSkills();
+    this.skillsService.loadSkills();
 
     this.isSkillsLoading$ = this.mainPanelDataQuery.selectSkillsLoading();
     this.skills$ = this.mainPanelDataQuery.selectSkills();
