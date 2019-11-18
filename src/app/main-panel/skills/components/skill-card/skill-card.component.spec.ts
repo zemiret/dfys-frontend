@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { SharedModule } from '@shared/shared.module';
 
@@ -10,7 +11,7 @@ describe('SkillCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AngularMaterialModule, SharedModule],
+      imports: [AngularMaterialModule, SharedModule, RouterTestingModule],
       declarations: [SkillCardComponent],
     }).compileComponents();
   }));

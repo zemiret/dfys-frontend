@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
+import { ActivityPanelComponent } from '@app/main-panel/activities/components/activity-panel/activity-panel.component';
 import { SkillsSidebarComponent } from '@app/main-panel/components/skills-sidebar/skills-sidebar.component';
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
@@ -39,6 +40,7 @@ describe('routes', () => {
         SkillsSidebarComponent,
         PageNotFoundComponent,
         SkillCardComponent,
+        ActivityPanelComponent,
       ],
     }).compileComponents();
 

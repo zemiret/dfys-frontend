@@ -1,15 +1,15 @@
-<mat-card>
+<mat-card class="skill-card">
   <mat-card-header>
     <mat-card-title>
       {{ category?.name }}
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <dfys-activity-card
-      *ngFor="let activity of activities"
-      [activity]="activity"
-      [category]="category"
-    >
-    </dfys-activity-card>
+    <div class="activity-card-container" *ngFor="let activity of activities">
+      <a [routerLink]="['/main-panel/activities', activity.id]">
+        <dfys-activity-card [activity]="activity" [category]="category">
+        </dfys-activity-card>
+      </a>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
@@ -13,7 +14,11 @@ describe('SkillsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AngularMaterialModule, HttpClientTestingModule],
+      imports: [
+        AngularMaterialModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+      ],
       declarations: [
         SkillsPageComponent,
         SkillCardComponent,

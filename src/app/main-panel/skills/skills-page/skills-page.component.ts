@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SkillsQuery, SkillsService } from '@app/main-panel/skills/state';
 import { ID } from '@datorama/akita';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
@@ -25,19 +26,28 @@ export class SkillsPageComponent extends SubscriptionHandler implements OnInit {
   }
 
   ngOnInit() {
+    this.addSkillLoadSubscription();
+  }
+
+  selectActivitiesForCategory(category: Category) {
+    return this.skillsQuery.selectSkillActivities(this.id, category.id);
+  }
+
+  private addSkillLoadSubscription() {
+    // TODO: This fires one last time after routing (which is not good...)
     this.addSubscription(
       this.routerQuery
         .selectParams<ID>('id')
         .pipe(filter(id => id != null))
         .subscribe(id => {
-          this.skillService.loadSkill(id);
-          this.categories$ = this.skillsQuery.selectSkillCategories(id);
-          this.id = id;
+          this.setData(id);
         })
     );
   }
 
-  selectActivitiesForCategory(category: Category) {
-    return this.skillsQuery.selectSkillActivities(this.id, category.id);
+  private setData(id: ID) {
+    this.skillService.loadSkill(id);
+    this.categories$ = this.skillsQuery.selectSkillCategories(id);
+    this.id = id;
   }
 }

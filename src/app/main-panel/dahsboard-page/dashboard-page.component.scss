@@ -1,7 +1,8 @@
 @import 'variables';
 
 .activity-card-container {
-  padding-right: 20px;
+  padding-right: $lg;
+  padding-left: $lg;
 }
 
 .activity-card {

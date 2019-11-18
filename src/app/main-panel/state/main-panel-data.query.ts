@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineQueries } from '@datorama/akita';
 import { CategoriesQuery } from '@model/categories';
 import { Observable, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { DeepSkill, SkillsQuery } from '../skills/state';
 
 @Injectable({ providedIn: 'root' })
@@ -29,6 +29,7 @@ export class MainPanelDataQuery {
       this.skillsQuery.selectSkillList(),
       this.categoriesQuery.selectAll({ asObject: true }),
     ]).pipe(
+      filter(([skills, categories]) => skills != null && categories != null),
       map(([skills, categories]) => {
         return skills.map(skill => ({
           ...skill,
