@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivitiesQuery } from '@app/main-panel/activities/state';
-import { ID, QueryEntity } from '@datorama/akita';
+import { ActivitiesQuery, Activity } from '@app/main-panel/activities/state';
+import { Skill } from '@app/main-panel/skills/state/skill.model';
+import { getIDType, ID, QueryEntity } from '@datorama/akita';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
 import { CategoriesQuery, Category } from '@model/categories';
 import { Observable } from 'rxjs';
@@ -24,7 +25,7 @@ export class SkillsQuery extends QueryEntity<SkillsState> {
     });
   }
 
-  selectSkillCategories(skillId: ID): Observable<Category[]> {
+  selectSkillCategories(skillId: getIDType<Skill>): Observable<Category[]> {
     return this.selectEntity(skillId).pipe(
       filter(skill => skill != null),
       map(skill => {
@@ -34,12 +35,12 @@ export class SkillsQuery extends QueryEntity<SkillsState> {
     );
   }
 
-  selectSkillActivities(skillId: ID, categoryId?: ID) {
-    // TODO: FIX THIS!
-    // For some reason filtering the activity to skill leaves us with empty list.
-    const filters = [activity => activity.skill === skillId];
+  selectSkillActivities(skillId: ID, categoryId?: ID): Observable<Activity[]> {
+    // tslint:disable-next-line:triple-equals
+    const filters = [activity => activity.skill == skillId];
     if (categoryId) {
-      filters.push(activity => activity.category === categoryId);
+      // tslint:disable-next-line:triple-equals
+      filters.push(activity => activity.category == categoryId);
     }
 
     return this.activitiesQuery.selectAll({

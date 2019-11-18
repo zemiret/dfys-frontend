@@ -2,7 +2,6 @@ import { Activity } from '@app/main-panel/activities/state';
 import { ID } from '@datorama/akita';
 import { Category } from '@model/categories';
 import { Modify } from '@shared/types';
-import { Observable } from 'rxjs';
 
 export interface Skill {
   id: ID;
