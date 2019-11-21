@@ -1,6 +1,10 @@
-<dfys-activity-panel
-  [activity]="activity$ | async"
-  [skill]="skill$ | async"
-  [category]="category$ | async"
->
-</dfys-activity-panel>
+<main class="container">
+  <a (click)="navigateBack()">BACK</a>
+
+  <dfys-activity-panel
+    [activity]="activity$ | async"
+    [skill]="skill$ | async"
+    [category]="category$ | async"
+  >
+  </dfys-activity-panel>
+</main>

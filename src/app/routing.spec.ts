@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
@@ -28,6 +29,7 @@ describe('routes', () => {
         RouterTestingModule.withRoutes(routes),
         HttpClientTestingModule,
         AngularMaterialModule,
+        ReactiveFormsModule,
       ],
       declarations: [
         ActivitiesPageComponent,

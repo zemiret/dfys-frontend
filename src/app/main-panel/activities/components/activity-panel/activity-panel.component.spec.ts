@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from '@app/angular-material.module';
 
 import { ActivityPanelComponent } from './activity-panel.component';
 
@@ -9,6 +11,7 @@ describe('ActivityPanelComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ActivityPanelComponent],
+      imports: [ReactiveFormsModule, AngularMaterialModule],
     }).compileComponents();
   }));
 

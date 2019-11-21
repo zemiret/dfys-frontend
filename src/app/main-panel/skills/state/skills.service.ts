@@ -48,7 +48,8 @@ export class SkillsService {
       .get<SkillResponse>(`api/skills/${id}`)
       .pipe(
         tap(data => {
-          this.skillsStore.add(
+          this.skillsStore.upsert(
+            data.id,
             createSkill({
               id: data.id,
               name: data.name,

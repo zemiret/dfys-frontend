@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Activity } from '@app/main-panel/activities/state';
+import { FormControl, FormGroup } from '@angular/forms';
+import {
+  ActivitiesQuery,
+  Activity,
+  ActivityEntry,
+} from '@app/main-panel/activities/state';
 import { Skill } from '@app/main-panel/skills/state';
 import { Category } from '@model/categories';
 
@@ -13,7 +18,16 @@ export class ActivityPanelComponent implements OnInit {
   @Input() skill: Skill;
   @Input() category: Category;
 
-  constructor() {}
+  activityForm = new FormGroup({
+    activityTitle: new FormControl(
+      this.activity != null ? this.activity.title : ''
+    ),
+    activityDescription: new FormControl(
+      this.activity != null ? this.activity.description : ''
+    ),
+  });
+
+  constructor(private activitiesQuery: ActivitiesQuery) {}
 
   ngOnInit() {}
 }

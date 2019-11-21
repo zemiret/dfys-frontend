@@ -1,7 +1,11 @@
-import { ID } from '@datorama/akita';
-import { Category } from '@model/categories';
-import { Modify } from '@shared/types';
-import { Skill } from '../../skills/state';
+import { HashMap, ID } from '@datorama/akita';
+
+export interface ActivityEntry {
+  id: ID;
+  addDate: string;
+  modifyDate: string;
+  comment: string;
+}
 
 export interface Activity {
   id: ID;
@@ -11,6 +15,7 @@ export interface Activity {
   description: string;
   category: ID;
   skill: ID;
+  entries?: HashMap<ActivityEntry>;
 }
 
 export function createActivity(params: Partial<Activity>) {

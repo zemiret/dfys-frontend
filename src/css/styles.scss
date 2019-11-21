@@ -23,7 +23,7 @@ a {
 	text-decoration: none;
 	color: $black;
 
-	:hover, :active {
+	&:hover, &:active {
 		cursor: pointer;
 	}
 }

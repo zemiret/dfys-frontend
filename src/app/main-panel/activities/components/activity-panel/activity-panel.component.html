@@ -1,5 +1,39 @@
-<p>
-  {{ skill?.name }}
-  {{ category?.name }}
-  {{ activity?.title }}
-</p>
+<mat-card class="activity-panel">
+  <form [formGroup]="activityForm">
+    <div fxLayout="column">
+      <mat-form-field>
+        <label>
+          <input
+            matInput
+            type="text"
+            formControlName="activityTitle"
+            [placeholder]="activity?.title"
+          />
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <textarea
+            matInput
+            formControlName="activityDescription"
+            [placeholder]="activity?.description"
+          ></textarea>
+        </label>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <!--  <br>-->
+  <!--  br xD-->
+
+  <!--  {{ skill?.name }}-->
+  <!--  {{ category?.name }}-->
+  <!--  {{ activity?.title }}-->
+
+  <div
+    *ngFor="let entry of this.activitiesQuery.getEntriesFromActivity(activity)"
+  >
+    {{ entry.comment }}
+  </div>
+</mat-card>

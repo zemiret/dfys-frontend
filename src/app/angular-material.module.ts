@@ -5,8 +5,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule,
   MatCardModule,
+  MatFormFieldModule,
   MatIconModule,
   MatIconRegistry,
+  MatInputModule,
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
@@ -25,6 +27,8 @@ const materialModules = [
   MatListModule,
   MatCardModule,
   MatTreeModule,
+  MatFormFieldModule,
+  MatInputModule,
   FlexLayoutModule,
 ];
 

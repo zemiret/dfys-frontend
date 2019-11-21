@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HashMap } from '@datorama/akita';
+import { HashMap, ID } from '@datorama/akita';
 import { finalize } from 'rxjs/operators';
 import { ActivitiesStore } from './activities.store';
 import { Activity } from './activity.model';
@@ -19,5 +19,14 @@ export class ActivitiesService {
       .get<HashMap<Activity>>('api/activities/recent')
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(data => this.activitiesStore.set(data));
+  }
+
+  loadActivity(id: ID) {
+    this.activitiesStore.setLoading(true);
+
+    return this.http
+      .get<Activity>(`api/activities/${id}`)
+      .pipe(finalize(() => this.activitiesStore.setLoading(false)))
+      .subscribe(data => this.activitiesStore.upsert(data.id, data));
   }
 }
