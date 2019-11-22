@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivitiesQuery, Activity } from '@app/main-panel/activities/state';
 import { Skill } from '@app/main-panel/skills/state/skill.model';
-import { getIDType, ID, QueryEntity } from '@datorama/akita';
+import { combineQueries, getIDType, ID, QueryEntity } from '@datorama/akita';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
 import { CategoriesQuery, Category } from '@model/categories';
 import { Observable } from 'rxjs';
@@ -46,5 +46,18 @@ export class SkillsQuery extends QueryEntity<SkillsState> {
     return this.activitiesQuery.selectAll({
       filterBy: filters,
     });
+  }
+
+  isActivityLoading(): Observable<boolean> {
+    return combineQueries([
+      this.selectLoading(),
+      this.activitiesQuery.selectLoading(),
+      this.categoriesQuery.selectLoading(),
+    ]).pipe(
+      map(
+        ([actLoading, skillLoading, catLoading]) =>
+          actLoading || skillLoading || catLoading
+      )
+    );
   }
 }

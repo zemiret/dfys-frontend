@@ -20,6 +20,10 @@ export class SkillsService {
     private http: HttpClient
   ) {}
 
+  setActive(id: ID | null) {
+    this.skillsStore.setActive(id);
+  }
+
   loadSkills() {
     this.skillsStore.setLoading(true);
     this.categoriesStore.setLoading(true);

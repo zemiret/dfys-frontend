@@ -10,6 +10,8 @@ import {
   MatIconRegistry,
   MatInputModule,
   MatListModule,
+  MatOptionModule,
+  MatSelectModule,
   MatSidenavModule,
   MatToolbarModule,
   MatTreeModule,
@@ -29,6 +31,8 @@ const materialModules = [
   MatTreeModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSelectModule,
+  MatOptionModule,
   FlexLayoutModule,
 ];
 

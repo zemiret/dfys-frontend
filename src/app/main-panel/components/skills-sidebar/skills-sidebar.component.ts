@@ -71,7 +71,7 @@ export class SkillsSidebarComponent extends SubscriptionHandler
           link: `skills/${skill.id}`,
           children: skill.categories.map(cat => ({
             name: cat.name,
-            link: `skills/${skill.id}`, // TODO: Extend this to filter by category
+            link: `skills/${skill.id}`, // TODO: Extend this to filter by categories$
             children: [],
           })),
         }));

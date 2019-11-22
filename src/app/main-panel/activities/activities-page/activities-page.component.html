@@ -2,9 +2,9 @@
   <a (click)="navigateBack()">BACK</a>
 
   <dfys-activity-panel
-    [activity]="activity$ | async"
-    [skill]="skill$ | async"
-    [category]="category$ | async"
+    [activity$]="activity$"
+    [skills$]="skills$"
+    [categories$]="categories$"
   >
   </dfys-activity-panel>
 </main>

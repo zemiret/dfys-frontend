@@ -3,7 +3,9 @@ import {
   Activity,
   ActivityEntry,
 } from '@app/main-panel/activities/state/activity.model';
-import { QueryEntity } from '@datorama/akita';
+import { combineQueries, QueryEntity } from '@datorama/akita';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ActivitiesState, ActivitiesStore } from './activities.store';
 
 @Injectable({ providedIn: 'root' })

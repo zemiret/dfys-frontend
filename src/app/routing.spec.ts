@@ -13,6 +13,7 @@ import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { ActivityCardComponent } from '@shared/components';
+import { SharedModule } from '@shared/shared.module';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -30,6 +31,7 @@ describe('routes', () => {
         HttpClientTestingModule,
         AngularMaterialModule,
         ReactiveFormsModule,
+        SharedModule,
       ],
       declarations: [
         ActivitiesPageComponent,
@@ -38,7 +40,6 @@ describe('routes', () => {
         SkillsPageComponent,
         AppComponent,
         LayoutComponent,
-        ActivityCardComponent,
         SkillsSidebarComponent,
         PageNotFoundComponent,
         SkillCardComponent,
@@ -64,14 +65,14 @@ describe('routes', () => {
     expect(location.path()).toBe('/settings');
   });
 
-  it('navigation to skills$ should lead to skills$', async () => {
-    await router.navigate(['/main-panel/skills$', '12']);
-    expect(location.path()).toBe('/main-panel/skills$/12');
+  it('navigation to skills should lead to skills', async () => {
+    await router.navigate(['/main-panel/skills', '12']);
+    expect(location.path()).toBe('/main-panel/skills/12');
   });
 
   it('navigation to activities should lead to activities', async () => {
-    await router.navigate(['/main-panel/skills$', '12', 'activities', '11']);
-    expect(location.path()).toBe('/main-panel/skills$/12/activities/11');
+    await router.navigate(['/main-panel/skills', '12', 'activities', '11']);
+    expect(location.path()).toBe('/main-panel/skills/12/activities/11');
   });
 
   it('navigation to non existing routes should display page not found', async () => {

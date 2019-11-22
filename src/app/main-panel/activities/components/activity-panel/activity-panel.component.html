@@ -1,38 +1,66 @@
-<mat-card class="activity-panel">
-  <form [formGroup]="activityForm">
-    <div fxLayout="column">
-      <mat-form-field>
-        <label>
-          <input
-            matInput
-            type="text"
-            formControlName="activityTitle"
-            [placeholder]="activity?.title"
-          />
-        </label>
-      </mat-form-field>
+<mat-card
+  class="activity-panel"
+  *ngLet="{
+    activity: activity$ | async,
+    skills: skills$ | async,
+    categories: categories$ | async
+  } as data"
+>
+  <div *ngIf="(isLoading$ | async) === false">
+    <form [formGroup]="activityForm">
+      <div fxLayout="column">
+        <mat-form-field>
+          <label>
+            <input
+              matInput
+              type="text"
+              formControlName="title"
+              [placeholder]="data.activity?.title"
+            />
+          </label>
+        </mat-form-field>
 
-      <mat-form-field>
-        <label>
-          <textarea
-            matInput
-            formControlName="activityDescription"
-            [placeholder]="activity?.description"
-          ></textarea>
-        </label>
-      </mat-form-field>
-    </div>
-  </form>
+        <mat-form-field>
+          <label>
+            <textarea
+              matInput
+              formControlName="description"
+              [placeholder]="data.activity?.description"
+            ></textarea>
+          </label>
+        </mat-form-field>
 
-  <!--  <br>-->
-  <!--  br xD-->
+        <mat-form-field>
+          <mat-select [placeholder]="data.skills[(data.activity?.skill)]?.name">
+            <mat-option
+              *ngFor="let skill of data?.skills | keyvalue"
+              [value]="skill.value.id"
+            >
+              {{ skill.value.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-  <!--  {{ skill?.name }}-->
-  <!--  {{ category?.name }}-->
-  <!--  {{ activity?.title }}-->
+        <mat-form-field>
+          <mat-select
+            [placeholder]="data.categories[(data.activity?.category)]?.name"
+          >
+            <mat-option
+              *ngFor="let category of data?.categories | keyvalue"
+              [value]="category.value.id"
+            >
+              {{ category.value.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
 
   <div
-    *ngFor="let entry of this.activitiesQuery.getEntriesFromActivity(activity)"
+    *ngFor="
+      let entry of this.activitiesQuery.getEntriesFromActivity(data.activity)
+    "
   >
     {{ entry.comment }}
   </div>

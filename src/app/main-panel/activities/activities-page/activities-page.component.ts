@@ -10,12 +10,16 @@ import {
   SkillsQuery,
   SkillsService,
 } from '@app/main-panel/skills/state';
-import { ID } from '@datorama/akita';
+import { HashMap, ID } from '@datorama/akita';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
-import { CategoriesQuery, Category } from '@model/categories';
+import {
+  CategoriesQuery,
+  CategoriesService,
+  Category,
+} from '@model/categories';
 import { SubscriptionHandler } from '@shared/subscription-handler';
 import { Observable } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { filter, first, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'dfys-activities-page',
@@ -26,8 +30,8 @@ export class ActivitiesPageComponent extends SubscriptionHandler
   implements OnInit {
   id: ID;
   activity$: Observable<Activity>;
-  skill$: Observable<Skill>;
-  category$: Observable<Category>;
+  skills$: Observable<HashMap<Skill>>;
+  categories$: Observable<HashMap<Category>>;
 
   constructor(
     private routerQuery: RouterQuery,
@@ -36,6 +40,7 @@ export class ActivitiesPageComponent extends SubscriptionHandler
     private activitiesQuery: ActivitiesQuery,
     private activitiesService: ActivitiesService,
     private skillsService: SkillsService,
+    private categoriesService: CategoriesService,
     private router: Router
   ) {
     super();
@@ -60,24 +65,28 @@ export class ActivitiesPageComponent extends SubscriptionHandler
   }
 
   private setData(id: ID) {
+    this.skills$ = this.skillsQuery.selectAll({ asObject: true });
+    this.categories$ = this.categoriesQuery.selectAll({ asObject: true });
     this.activity$ = this.activitiesQuery.selectEntity(id);
 
     this.addSubscription(
       this.activity$
         .pipe(filter(activity => activity != null))
         .subscribe(activity => {
-          this.skill$ = this.skillsQuery.selectEntity(activity.skill);
-          this.category$ = this.categoriesQuery.selectEntity(activity.category);
+          this.skillsService.setActive(activity.skill);
+          this.categoriesService.setActive(activity.category);
         })
     );
   }
 
   private navigateBack() {
-    this.skill$
+    this.skillsQuery
+      .selectActiveId()
       .pipe(
-        tap(skill => this.router.navigate(['/main-panel/skills', skill.id]))
+        filter(id => id != null),
+        first(),
+        tap(skillId => this.router.navigate(['/main-panel/skills', skillId]))
       )
-      .subscribe()
-      .unsubscribe();
+      .subscribe();
   }
 }
