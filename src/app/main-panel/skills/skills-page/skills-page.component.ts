@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { SkillsQuery, SkillsService } from '@app/main-panel/skills/state';
 import { ID } from '@datorama/akita';
 import { RouterQuery } from '@datorama/akita-ng-router-store';

@@ -1,18 +1,21 @@
 import { Location } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
+import {
+  ActivityEntryComponent,
+  ActivityEntryListComponent,
+} from '@app/main-panel/activities/components';
 import { ActivityPanelComponent } from '@app/main-panel/activities/components/activity-panel/activity-panel.component';
 import { SkillsSidebarComponent } from '@app/main-panel/components/skills-sidebar/skills-sidebar.component';
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { ActivityCardComponent } from '@shared/components';
 import { SharedModule } from '@shared/shared.module';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +35,7 @@ describe('routes', () => {
         AngularMaterialModule,
         ReactiveFormsModule,
         SharedModule,
+        FormsModule,
       ],
       declarations: [
         ActivitiesPageComponent,
@@ -44,6 +48,8 @@ describe('routes', () => {
         PageNotFoundComponent,
         SkillCardComponent,
         ActivityPanelComponent,
+        ActivityEntryListComponent,
+        ActivityEntryComponent,
       ],
     }).compileComponents();
 

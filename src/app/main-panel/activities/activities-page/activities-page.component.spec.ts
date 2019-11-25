@@ -1,9 +1,12 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { createAotCompiler } from '@angular/compiler';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
+import {
+  ActivityEntryComponent,
+  ActivityEntryListComponent,
+} from '@app/main-panel/activities/components';
 import { ActivityPanelComponent } from '@app/main-panel/activities/components/activity-panel/activity-panel.component';
 import { createActivity } from '@app/main-panel/activities/state';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
@@ -24,8 +27,14 @@ describe('ActivitiesPageComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,
+        FormsModule,
       ],
-      declarations: [ActivitiesPageComponent, ActivityPanelComponent],
+      declarations: [
+        ActivitiesPageComponent,
+        ActivityPanelComponent,
+        ActivityEntryListComponent,
+        ActivityEntryComponent,
+      ],
       providers: [RouterQuery],
     }).compileComponents();
   }));

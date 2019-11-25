@@ -1,0 +1,17 @@
+<div fxLayout="column">
+  <!--  TODO: Styling -->
+  <div style="height: 40px"></div>
+
+  <label>
+    <input type="text" [(ngModel)]="newEntryComment" />
+    <button (click)="addEntry()">Add entry</button>
+  </label>
+
+  <div style="height: 40px"></div>
+
+  <dfys-activity-entry
+    *ngFor="let entry of entries; trackBy: getEntryKey"
+    [entry]="entry"
+  >
+  </dfys-activity-entry>
+</div>

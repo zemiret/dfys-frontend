@@ -29,4 +29,9 @@ export class ActivitiesService {
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(data => this.activitiesStore.upsert(data.id, data));
   }
+
+  addEntry(comment: string) {
+    // TODO: Implement
+    console.log('Adding entry: ', comment);
+  }
 }

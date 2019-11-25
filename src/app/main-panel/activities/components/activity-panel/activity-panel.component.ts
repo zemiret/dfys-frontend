@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivitiesQuery, Activity } from '@app/main-panel/activities/state';
 import { Skill, SkillsQuery } from '@app/main-panel/skills/state';
 import { HashMap } from '@datorama/akita';
 import { Category } from '@model/categories';
 import { Observable } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
+
+// TODO: FIx this component template, maybe? (untyped variables)
 
 @Component({
   selector: 'dfys-activity-panel',
@@ -18,14 +20,15 @@ export class ActivityPanelComponent implements OnInit {
   @Input() categories$: Observable<HashMap<Category>>;
   isLoading$: Observable<boolean>;
 
-  activityForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    skill: new FormControl(-1),
-    category: new FormControl(-1),
+  activityForm = this.fb.group({
+    title: ['', Validators.required],
+    description: '',
+    skill: [-1, Validators.required],
+    category: [-1, Validators.required],
   });
 
   constructor(
+    private fb: FormBuilder,
     private activitiesQuery: ActivitiesQuery,
     private skillsQuery: SkillsQuery
   ) {}
@@ -46,5 +49,25 @@ export class ActivityPanelComponent implements OnInit {
           category: activity.category,
         });
       });
+  }
+
+  onSubmit() {
+    console.log('TODO: Submit!');
+  }
+
+  get title() {
+    return this.activityForm.get('title');
+  }
+
+  get description() {
+    return this.activityForm.get('description');
+  }
+
+  get skill() {
+    return this.activityForm.get('skill');
+  }
+
+  get category() {
+    return this.activityForm.get('category');
   }
 }

@@ -27,5 +27,15 @@ export function createActivity(params: Partial<Activity>) {
     description: params.description || '',
     category: params.category || -1,
     skill: params.category || -1,
+    entries: params.entries || {},
   } as Activity;
+}
+
+export function createEntry(params: Partial<ActivityEntry>) {
+  return {
+    id: params.id || -1,
+    addDate: params.addDate || '',
+    modifyDate: params.modifyDate || '',
+    comment: params.comment || '',
+  };
 }
