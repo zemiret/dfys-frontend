@@ -31,7 +31,7 @@ export function createActivity(params: Partial<Activity>) {
   } as Activity;
 }
 
-export function createEntry(params: Partial<ActivityEntry>) {
+export function createActivtyEntry(params: Partial<ActivityEntry>) {
   return {
     id: params.id || -1,
     addDate: params.addDate || '',

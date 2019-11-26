@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivitiesQuery, Activity } from '@app/main-panel/activities/state';
+import {
+  ActivitiesQuery,
+  ActivitiesService,
+  Activity,
+  createActivity,
+} from '@app/main-panel/activities/state';
 import { Skill, SkillsQuery } from '@app/main-panel/skills/state';
 import { HashMap } from '@datorama/akita';
 import { Category } from '@model/categories';
@@ -30,7 +35,8 @@ export class ActivityPanelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private activitiesQuery: ActivitiesQuery,
-    private skillsQuery: SkillsQuery
+    private skillsQuery: SkillsQuery,
+    private activitiesService: ActivitiesService
   ) {}
 
   ngOnInit() {
@@ -53,6 +59,11 @@ export class ActivityPanelComponent implements OnInit {
 
   onSubmit() {
     console.log('TODO: Submit!');
+    if (this.activityForm.valid && this.activityForm.touched) {
+      this.activitiesService.addActivity(
+        createActivity(this.activityForm.value)
+      );
+    }
   }
 
   get title() {
