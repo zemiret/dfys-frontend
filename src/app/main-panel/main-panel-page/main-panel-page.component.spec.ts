@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { SkillsSidebarComponent } from '@app/main-panel/components';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
+import { MainNavigationComponent } from '@shared/components';
 
 import { MainPanelPageComponent } from './main-panel-page.component';
 
@@ -13,7 +14,11 @@ describe('MainPanelPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainPanelPageComponent, SkillsSidebarComponent],
+      declarations: [
+        MainPanelPageComponent,
+        SkillsSidebarComponent,
+        MainNavigationComponent,
+      ],
       imports: [
         RouterTestingModule,
         AngularMaterialModule,

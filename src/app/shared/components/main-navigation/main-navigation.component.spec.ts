@@ -9,15 +9,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
-import { LayoutComponent } from './layout.component';
+import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
 
 describe('LayoutComponent', () => {
-  let component: LayoutComponent;
-  let fixture: ComponentFixture<LayoutComponent>;
+  let component: MainNavigationComponent;
+  let fixture: ComponentFixture<MainNavigationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LayoutComponent],
+      declarations: [MainNavigationComponent],
       imports: [
         RouterTestingModule,
         NoopAnimationsModule,
@@ -34,7 +34,7 @@ describe('LayoutComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutComponent);
+    fixture = TestBed.createComponent(MainNavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

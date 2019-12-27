@@ -1,12 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { ActivityCardComponent } from '@shared/components';
+import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
 import { NgLetDirective } from './directives/ng-let.directive';
 
+const exportedMembers = [
+  ActivityCardComponent,
+  NgLetDirective,
+  MainNavigationComponent,
+];
+
 @NgModule({
-  declarations: [ActivityCardComponent, NgLetDirective],
-  imports: [CommonModule, AngularMaterialModule],
-  exports: [ActivityCardComponent, NgLetDirective],
+  declarations: exportedMembers,
+  imports: [CommonModule, AngularMaterialModule, RouterModule],
+  exports: exportedMembers,
 })
 export class SharedModule {}

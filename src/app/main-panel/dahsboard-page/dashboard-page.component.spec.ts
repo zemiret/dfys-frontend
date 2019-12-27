@@ -4,7 +4,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
-import { ActivityCardComponent } from '@shared/components';
+import {
+  ActivityCardComponent,
+  MainNavigationComponent,
+} from '@shared/components';
 
 import { DashboardPageComponent } from './dashboard-page.component';
 
@@ -18,6 +21,7 @@ describe('DashboardPageComponent', () => {
         DashboardPageComponent,
         ActivityCardComponent,
         SkillCardComponent,
+        MainNavigationComponent,
       ],
       imports: [
         HttpClientTestingModule,

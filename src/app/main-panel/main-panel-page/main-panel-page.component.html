@@ -1,16 +1,18 @@
-<div
-  fxLayout="row"
-  fxLayoutAlign="start stretch"
-  fxLayout.lt-sm="column"
-  class="container"
->
-  <dfys-skills-sidebar
-    fxFlex="1 0 300px"
-    fxFlex.lt-sm="0 1 auto"
-    [skills$]="skills$"
-  ></dfys-skills-sidebar>
+<dfys-main-navigation>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start stretch"
+    fxLayout.lt-sm="column"
+    class="container"
+  >
+    <dfys-skills-sidebar
+      fxFlex="1 0 300px"
+      fxFlex.lt-sm="0 1 auto"
+      [skills$]="skills$"
+    ></dfys-skills-sidebar>
 
-  <div fxFlexFill fxFlex="1 1 auto">
-    <router-outlet></router-outlet>
+    <div fxFlexFill fxFlex="1 1 auto">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+</dfys-main-navigation>

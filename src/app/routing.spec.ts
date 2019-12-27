@@ -16,10 +16,10 @@ import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard
 import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
 import { SharedModule } from '@shared/shared.module';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 
 describe('routes', () => {
@@ -43,7 +43,6 @@ describe('routes', () => {
         SettingsPageComponent,
         SkillsPageComponent,
         AppComponent,
-        LayoutComponent,
         SkillsSidebarComponent,
         PageNotFoundComponent,
         SkillCardComponent,

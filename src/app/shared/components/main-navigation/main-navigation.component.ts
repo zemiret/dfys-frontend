@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'dfys-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+  selector: 'dfys-main-navigation',
+  templateUrl: './main-navigation.component.html',
+  styleUrls: ['./main-navigation.component.scss'],
 })
-export class LayoutComponent {
+export class MainNavigationComponent {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
