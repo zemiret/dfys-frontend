@@ -17,6 +17,7 @@ import {
   CategoriesService,
   Category,
 } from '@model/categories';
+import { Paths } from '@shared/constants/routes';
 import { SubscriptionHandler } from '@shared/subscription-handler';
 import { Observable } from 'rxjs';
 import { filter, first, tap } from 'rxjs/operators';
@@ -85,7 +86,7 @@ export class ActivitiesPageComponent extends SubscriptionHandler
       .pipe(
         filter(id => id != null),
         first(),
-        tap(skillId => this.router.navigate(['/main-panel/skills', skillId]))
+        tap(skillId => this.router.navigate([Paths.SKILLS, skillId]))
       )
       .subscribe();
   }

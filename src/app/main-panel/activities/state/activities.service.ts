@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HashMap, ID } from '@datorama/akita';
+import { Endpoints } from '@shared/constants/endpoints';
 import { finalize } from 'rxjs/operators';
 import { ActivitiesStore } from './activities.store';
 import { Activity, ActivityEntry } from './activity.model';
@@ -16,7 +17,7 @@ export class ActivitiesService {
     this.activitiesStore.setLoading(true);
 
     return this.http
-      .get<HashMap<Activity>>('api/activities/recent')
+      .get<HashMap<Activity>>(`${Endpoints.RECENT_ACTIVITIES}`)
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(data => this.activitiesStore.set(data));
   }
@@ -25,7 +26,7 @@ export class ActivitiesService {
     this.activitiesStore.setLoading(true);
 
     return this.http
-      .get<Activity>(`api/activities/${id}`)
+      .get<Activity>(`${Endpoints.ACTIVITIES}/${id}`)
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(data => this.activitiesStore.upsert(data.id, data));
   }
@@ -35,7 +36,7 @@ export class ActivitiesService {
     this.activitiesStore.setLoading(true);
 
     return this.http
-      .post<Activity>(`api/activities/`, { ...activity })
+      .post<Activity>(`${Endpoints.ACTIVITIES}`, { ...activity })
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(addedActivity => {
         this.activitiesStore.add(activity);
@@ -48,10 +49,13 @@ export class ActivitiesService {
     this.activitiesStore.setLoading(true);
 
     return this.http
-      .post<ActivityEntry>(`api/activities/${activityId}/entries/`, {
-        comment,
-        activity: activityId,
-      })
+      .post<ActivityEntry>(
+        `${Endpoints.ACTIVITIES}/${activityId}/${Endpoints.ENTRIES}/`,
+        {
+          comment,
+          activity: activityId,
+        }
+      )
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(entry =>
         this.activitiesStore.update(activityId, activity => ({
@@ -68,9 +72,12 @@ export class ActivitiesService {
     // TODO: Assert it's working when authorization is implemented
 
     return this.http
-      .put<ActivityEntry>(`api/activities/${activityId}/entries/${entry.id}/`, {
-        comment: entry.comment,
-      })
+      .put<ActivityEntry>(
+        `${Endpoints.ACTIVITIES}/${activityId}/${Endpoints.ENTRIES}/${entry.id}/`,
+        {
+          comment: entry.comment,
+        }
+      )
       .pipe(finalize(() => this.activitiesStore.setLoading(false)))
       .subscribe(updatedEntry =>
         this.activitiesStore.update(activityId, activity => ({

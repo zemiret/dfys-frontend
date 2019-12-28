@@ -1,7 +1,7 @@
 <div class="activity-card-container">
   <a
     *ngFor="let activity of activities$ | async"
-    [routerLink]="['activities', activity.id]"
+    [routerLink]="[activitiesLink, activity.id]"
   >
     <dfys-activity-card
       class="activity-card"

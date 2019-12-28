@@ -7,6 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { UserQuery, UserService } from '@app/auth/state/user';
+import { Paths } from '@shared/constants/routes';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -38,7 +39,7 @@ export class IsLoggedInGuard implements CanActivate {
 
     this.userService.saveRedirectUrl(url);
 
-    this.router.navigate(['/auth/login']);
+    this.router.navigateByUrl(Paths.LOGIN);
     return false;
   }
 }

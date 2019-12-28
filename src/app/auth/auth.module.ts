@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from '@app/auth/auth.routing.module';
 import { HttpAuthInterceptorService } from '@app/auth/http-auth-interceptor.service';
 import { CookieService } from 'ngx-cookie-service';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [LoginPageComponent, LogoutButtonComponent],
   imports: [CommonModule, ReactiveFormsModule, AuthRoutingModule],
   providers: [
     {
@@ -18,5 +19,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
     },
     CookieService,
   ],
+  exports: [LogoutButtonComponent],
 })
 export class AuthModule {}

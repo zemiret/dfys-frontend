@@ -8,6 +8,7 @@ import {
 import { SkillListResponse } from '@app/main-panel/state';
 import { ID } from '@datorama/akita';
 import { CategoriesStore } from '@model/categories';
+import { Endpoints } from '@shared/constants/endpoints';
 import { finalize, tap } from 'rxjs/operators';
 import { SkillsStore } from './skills.store';
 
@@ -29,7 +30,7 @@ export class SkillsService {
     this.categoriesStore.setLoading(true);
 
     return this.http
-      .get<SkillListResponse>('api/skills')
+      .get<SkillListResponse>(Endpoints.SKILLS)
       .pipe(
         tap(data => {
           this.skillsStore.set(data.skills);
@@ -49,7 +50,7 @@ export class SkillsService {
     this.activitiesStore.setLoading(true);
 
     return this.http
-      .get<SkillResponse>(`api/skills/${id}`)
+      .get<SkillResponse>(`${Endpoints.SKILLS}/${id}`)
       .pipe(
         tap(data => {
           this.skillsStore.upsert(

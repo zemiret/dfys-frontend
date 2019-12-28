@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsQuery } from '@app/main-panel/skills/state';
 import { CategoriesQuery } from '@model/categories';
+import { RouteNames } from '@shared/constants/routes';
 import { Observable } from 'rxjs';
 import {
   ActivitiesQuery,
@@ -16,6 +17,7 @@ import {
 export class DashboardPageComponent implements OnInit {
   isActivitiesLoading$: Observable<boolean>;
   activities$: Observable<Activity[]>;
+  private activitiesLink = RouteNames.ACTIVITIES;
 
   constructor(
     private activitiesService: ActivitiesService,

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ID } from '@datorama/akita';
+import { Endpoints } from '@shared/constants/endpoints';
 import { finalize } from 'rxjs/operators';
 import { CategoriesStore } from './categories.store';
 import { CategoryMap } from './category.model';
@@ -20,7 +21,7 @@ export class CategoriesService {
     this.categoriesStore.setLoading(true);
 
     return this.http
-      .get<CategoryMap>('/api/categories$')
+      .get<CategoryMap>(Endpoints.CATEGORIES)
       .pipe(finalize(() => this.categoriesStore.setLoading(false)))
       .subscribe(listResponse => this.categoriesStore.set(listResponse));
   }

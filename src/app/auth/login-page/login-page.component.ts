@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
       this.userService
         .login(this.loginForm.value.username, this.loginForm.value.password)
         .subscribe(() => {
-          this.router.navigate(['/']);
+          this.router.navigateByUrl('/');
         });
     }
   }

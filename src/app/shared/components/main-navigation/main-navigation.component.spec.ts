@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
+import { AuthModule } from '@app/auth/auth.module';
 import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
 
 describe('LayoutComponent', () => {
@@ -29,6 +30,7 @@ describe('LayoutComponent', () => {
         MatToolbarModule,
         AngularMaterialModule,
         HttpClientTestingModule,
+        AuthModule,
       ],
     }).compileComponents();
   }));

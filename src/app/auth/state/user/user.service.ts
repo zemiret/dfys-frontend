@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Endpoints } from '@shared/constants/endpoints';
 import { CookieService } from 'ngx-cookie-service';
 import { finalize, tap } from 'rxjs/operators';
 import { User } from './user.model';
@@ -17,7 +18,7 @@ export class UserService {
     this.userStore.setLoading(true);
 
     return this.http
-      .post<User>('/api/login', {
+      .post<User>(Endpoints.LOGIN, {
         username,
         password,
       })
@@ -39,6 +40,7 @@ export class UserService {
   }
 
   logout() {
+    this.http.post(Endpoints.LOGOUT, {}).subscribe();
     this.userStore.resetLocalStorage();
     this.userStore.reset();
   }

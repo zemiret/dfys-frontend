@@ -9,13 +9,15 @@
         ></mat-icon>
       </a>
       <span class="fill-space"></span>
-      <a class="color-white" [routerLink]="['/settings']">
+      <a class="color-white" [routerLink]="[settingsLink]">
         <mat-icon
           svgIcon="settings"
           aria-hidden="false"
           aria-label="Settings page icon"
         ></mat-icon>
       </a>
+
+      <dfys-logout-button></dfys-logout-button>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="layout-content-container">

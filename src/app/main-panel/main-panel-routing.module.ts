@@ -5,16 +5,20 @@ import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-p
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
 import { MainPanelPageComponent } from '@app/main-panel/main-panel-page/main-panel-page.component';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
+import { RouteNames } from '@shared/constants/routes';
 
 export const routes: Routes = [
   {
-    path: 'main-panel',
+    path: RouteNames.MAIN_PANEL,
     component: MainPanelPageComponent,
     canActivate: [IsLoggedInGuard],
     children: [
       { path: '', component: DashboardPageComponent },
-      { path: 'skills/:id', component: SkillsPageComponent },
-      { path: 'activities/:id', component: ActivitiesPageComponent },
+      { path: `${RouteNames.SKILLS}/:id`, component: SkillsPageComponent },
+      {
+        path: `${RouteNames.ACTIVITIES}/:id`,
+        component: ActivitiesPageComponent,
+      },
     ],
   },
 ];

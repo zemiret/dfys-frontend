@@ -16,7 +16,7 @@ import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard
 import { SkillCardComponent } from '@app/main-panel/skills/components';
 import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
+import { Paths, RouteNames } from '@shared/constants/routes';
 import { SharedModule } from '@shared/shared.module';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -66,17 +66,17 @@ describe('routes', () => {
   });
 
   it('navigation to settings should lead to settings', async () => {
-    await router.navigate(['/settings']);
+    await router.navigate([Paths.SETTINGS]);
     expect(location.path()).toBe('/settings');
   });
 
   it('navigation to skills should lead to skills', async () => {
-    await router.navigate(['/main-panel/skills', '12']);
+    await router.navigate([Paths.SKILLS, '12']);
     expect(location.path()).toBe('/main-panel/skills/12');
   });
 
   it('navigation to activities should lead to activities', async () => {
-    await router.navigate(['/main-panel/skills', '12', 'activities', '11']);
+    await router.navigate([Paths.SKILLS, '12', RouteNames.ACTIVITIES, '11']);
     expect(location.path()).toBe('/main-panel/skills/12/activities/11');
   });
 
