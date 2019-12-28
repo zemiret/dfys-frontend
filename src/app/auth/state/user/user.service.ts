@@ -23,20 +23,21 @@ export class UserService {
         password,
       })
       .pipe(
-        tap(user => {
-          const csrfToken = this.cookieService.get('csrftoken');
-          this.userStore.update(state => ({
-            user: {
-              username: user.username,
-              email: user.email,
-            },
-            csrfToken,
-          }));
-
-          this.userStore.saveToLocalStorage(user);
-        }),
+        tap(user => this.setUser(user)),
         finalize(() => this.userStore.setLoading(false))
       );
+  }
+
+  register(username: string, password: string, email: string) {
+    this.userStore.setLoading(true);
+
+    return this.http
+      .post<User>(Endpoints.REGISTER, {
+        username,
+        password,
+        email,
+      })
+      .pipe(tap(() => this.login(username, password).subscribe()));
   }
 
   logout() {
@@ -49,5 +50,19 @@ export class UserService {
     this.userStore.update(state => ({
       redirectUrl,
     }));
+  }
+
+  private setUser(user: User) {
+    const csrfToken = this.cookieService.get('csrftoken');
+
+    this.userStore.update(state => ({
+      user: {
+        username: user.username,
+        email: user.email,
+      },
+      csrfToken,
+    }));
+
+    this.userStore.saveToLocalStorage(user);
   }
 }

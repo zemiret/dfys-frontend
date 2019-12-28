@@ -80,6 +80,16 @@ describe('routes', () => {
     expect(location.path()).toBe('/main-panel/skills/12/activities/11');
   });
 
+  it('navigation to login should lead to login', async () => {
+    await router.navigate([Paths.LOGIN]);
+    expect(location.path()).toBe('/auth/login');
+  });
+
+  it('navigation to retgister should lead to register', async () => {
+    await router.navigate([Paths.REGISTER]);
+    expect(location.path()).toBe('/auth/register');
+  });
+
   it('navigation to non existing routes should display page not found', async () => {
     await router.navigate([
       'some-stupid',
