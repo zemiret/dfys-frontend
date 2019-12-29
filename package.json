@@ -64,7 +64,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run lint && ng test --watch=false"
+      "pre-commit": "npm run lint && ng test --watch=false"
     }
   }
 }

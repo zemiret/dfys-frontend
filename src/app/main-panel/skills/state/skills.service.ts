@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ActivitiesStore } from '@app/main-panel/activities/state';
 import {
   createSkill,
+  Skill,
   SkillResponse,
 } from '@app/main-panel/skills/state/skill.model';
 import { SkillListResponse } from '@app/main-panel/state';
@@ -77,5 +78,16 @@ export class SkillsService {
         })
       )
       .subscribe();
+  }
+
+  addSkill(skillName: string) {
+    this.skillsStore.setLoading(true);
+
+    this.http
+      .post<Skill>(`${Endpoints.SKILLS}/`, { name: skillName })
+      .pipe(finalize(() => this.skillsStore.setLoading(false)))
+      .subscribe(skill => {
+        this.skillsStore.add(skill);
+      });
   }
 }

@@ -1,6 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
+import { SkillAddControlComponent } from '@app/main-panel/components/skill-add-control/skill-add-control.component';
 import { of } from 'rxjs';
 
 import { SkillsSidebarComponent } from './skills-sidebar.component';
@@ -11,8 +14,13 @@ describe('SkillsSidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SkillsSidebarComponent],
-      imports: [AngularMaterialModule, RouterTestingModule],
+      declarations: [SkillsSidebarComponent, SkillAddControlComponent],
+      imports: [
+        AngularMaterialModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+      ],
     }).compileComponents();
   }));
 

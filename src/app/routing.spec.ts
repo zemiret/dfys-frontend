@@ -11,6 +11,7 @@ import {
   ActivityEntryListComponent,
 } from '@app/main-panel/activities/components';
 import { ActivityPanelComponent } from '@app/main-panel/activities/components/activity-panel/activity-panel.component';
+import { SkillAddControlComponent } from '@app/main-panel/components/skill-add-control/skill-add-control.component';
 import { SkillsSidebarComponent } from '@app/main-panel/components/skills-sidebar/skills-sidebar.component';
 import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
@@ -38,6 +39,7 @@ describe('routes', () => {
         FormsModule,
       ],
       declarations: [
+        SkillAddControlComponent,
         ActivitiesPageComponent,
         DashboardPageComponent,
         SettingsPageComponent,
