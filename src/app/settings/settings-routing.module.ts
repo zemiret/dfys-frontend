@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsPageComponent } from '@app/settings/settings-page/settings-page.component';
+import { SettingsPageComponent } from '@app/settings/pages';
 import { RouteNames } from '@shared/constants/routes';
 
 export const routes: Routes = [

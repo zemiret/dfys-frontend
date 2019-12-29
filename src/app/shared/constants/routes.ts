@@ -10,7 +10,7 @@ export enum RouteNames {
   SETTINGS = 'settings',
 }
 
-export const Paths = {
+export const Routes = {
   LOGIN: `/${RouteNames.AUTH}/${RouteNames.LOGIN}`,
   REGISTER: `/${RouteNames.AUTH}/${RouteNames.REGISTER}`,
 

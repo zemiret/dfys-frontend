@@ -2,13 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '@app/angular-material.module';
+import { ActivitiesPageComponent } from '@app/main-panel/activities/pages';
 import { SharedModule } from '@shared/shared.module';
-import { ActivitiesPageComponent } from './activities-page/activities-page.component';
-import {
-  ActivityEntryComponent,
-  ActivityEntryListComponent,
-} from './components';
-import { ActivityPanelComponent } from './components/activity-panel/activity-panel.component';
+import { ActivityEntryComponent } from './components';
+import { ActivityEntryListComponent, ActivityPanelComponent } from './smarts';
 
 @NgModule({
   declarations: [

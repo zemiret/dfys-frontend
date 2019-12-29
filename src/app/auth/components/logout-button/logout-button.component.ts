@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '@app/auth/state/user';
-import { Paths } from '@shared/constants/routes';
+import { Routes } from '@shared/constants/routes';
 
 @Component({
   selector: 'dfys-logout-button',
@@ -15,6 +15,6 @@ export class LogoutButtonComponent implements OnInit {
 
   private logout() {
     this.userService.logout();
-    this.router.navigateByUrl(Paths.LOGIN);
+    this.router.navigateByUrl(Routes.LOGIN);
   }
 }

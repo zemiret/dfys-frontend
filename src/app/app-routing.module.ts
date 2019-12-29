@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '@app/pages';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'main-panel', pathMatch: 'full' },

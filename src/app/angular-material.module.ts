@@ -54,5 +54,9 @@ export class AngularMaterialModule {
       'home',
       domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/home.svg')
     );
+    matIconRegistry.addSvgIcon(
+      'add',
+      domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg')
+    );
   }
 }

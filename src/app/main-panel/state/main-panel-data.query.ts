@@ -33,7 +33,11 @@ export class MainPanelDataQuery {
       map(([skills, categories]) => {
         return skills.map(skill => ({
           ...skill,
-          categories: skill.categories.map(id => categories[id]),
+          categories: skill.categories
+            .map(id => categories[id])
+            .sort((cat1, cat2) =>
+              cat1.displayOrder < cat2.displayOrder ? -1 : 1
+            ),
         }));
       })
     );

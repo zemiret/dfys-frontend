@@ -5,23 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
-import { ActivitiesPageComponent } from '@app/main-panel/activities/activities-page/activities-page.component';
+import { routes } from '@app/app-routing.module';
+import { ActivityEntryComponent } from '@app/main-panel/activities/components';
+import { ActivitiesPageComponent } from '@app/main-panel/activities/pages';
 import {
-  ActivityEntryComponent,
   ActivityEntryListComponent,
-} from '@app/main-panel/activities/components';
-import { ActivityPanelComponent } from '@app/main-panel/activities/components/activity-panel/activity-panel.component';
-import { SkillAddControlComponent } from '@app/main-panel/components/skill-add-control/skill-add-control.component';
-import { SkillsSidebarComponent } from '@app/main-panel/components/skills-sidebar/skills-sidebar.component';
-import { DashboardPageComponent } from '@app/main-panel/dahsboard-page/dashboard-page.component';
+  ActivityPanelComponent,
+} from '@app/main-panel/activities/smarts';
+import { SkillsSidebarTreeComponent } from '@app/main-panel/components';
+import { DashboardPageComponent } from '@app/main-panel/pages';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
-import { SkillsPageComponent } from '@app/main-panel/skills/skills-page/skills-page.component';
-import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { Paths, RouteNames } from '@shared/constants/routes';
+import { SkillsPageComponent } from '@app/main-panel/skills/pages';
+import { SkillsSidebarComponent } from '@app/main-panel/smarts';
+import { PageNotFoundComponent } from '@app/pages';
+import { SettingsPageComponent } from '@app/settings/pages';
+import { RouteNames, Routes } from '@shared/constants/routes';
 import { SharedModule } from '@shared/shared.module';
-import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 
 describe('routes', () => {
   let router: Router;
@@ -39,11 +39,11 @@ describe('routes', () => {
         FormsModule,
       ],
       declarations: [
-        SkillAddControlComponent,
         ActivitiesPageComponent,
         DashboardPageComponent,
         SettingsPageComponent,
         SkillsPageComponent,
+        SkillsSidebarTreeComponent,
         AppComponent,
         SkillsSidebarComponent,
         PageNotFoundComponent,
@@ -68,27 +68,27 @@ describe('routes', () => {
   });
 
   it('navigation to settings should lead to settings', async () => {
-    await router.navigate([Paths.SETTINGS]);
+    await router.navigate([Routes.SETTINGS]);
     expect(location.path()).toBe('/settings');
   });
 
   it('navigation to skills should lead to skills', async () => {
-    await router.navigate([Paths.SKILLS, '12']);
+    await router.navigate([Routes.SKILLS, '12']);
     expect(location.path()).toBe('/main-panel/skills/12');
   });
 
   it('navigation to activities should lead to activities', async () => {
-    await router.navigate([Paths.SKILLS, '12', RouteNames.ACTIVITIES, '11']);
+    await router.navigate([Routes.SKILLS, '12', RouteNames.ACTIVITIES, '11']);
     expect(location.path()).toBe('/main-panel/skills/12/activities/11');
   });
 
   it('navigation to login should lead to login', async () => {
-    await router.navigate([Paths.LOGIN]);
+    await router.navigate([Routes.LOGIN]);
     expect(location.path()).toBe('/auth/login');
   });
 
   it('navigation to retgister should lead to register', async () => {
-    await router.navigate([Paths.REGISTER]);
+    await router.navigate([Routes.REGISTER]);
     expect(location.path()).toBe('/auth/register');
   });
 

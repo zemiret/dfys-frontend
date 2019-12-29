@@ -1,0 +1,12 @@
+<form [formGroup]="formControl" (ngSubmit)="handleSubmit()">
+  <mat-form-field>
+    <input formControlName="value" matInput [placeholder]="placeholder" />
+    <button matSuffix type="submit" [disabled]="!formControl.valid">
+      <mat-icon
+        svgIcon="add"
+        aria-hidden="false"
+        aria-label="Add icon"
+      ></mat-icon>
+    </button>
+  </mat-form-field>
+</form>

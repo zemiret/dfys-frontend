@@ -4,6 +4,7 @@ export interface Category {
   id: ID;
   name: string;
   isBaseCategory: boolean;
+  displayOrder: number;
 }
 
 export type CategoryMap = HashMap<Category>;

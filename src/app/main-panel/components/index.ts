@@ -1,1 +1,1 @@
-export * from './skills-sidebar/skills-sidebar.component';
+export * from './skills-sidebar-tree/skills-sidebar-tree.component';

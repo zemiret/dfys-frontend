@@ -1,0 +1,8 @@
+<aside class="mat-elevation-z2 skills-sidebar-container">
+  <dfys-input-btn-control
+    placeholder="New skill name..."
+    (formSubmit)="addSkill($event)"
+  >
+  </dfys-input-btn-control>
+  <dfys-skills-sidebar-tree [skills$]="skills$"></dfys-skills-sidebar-tree>
+</aside>
