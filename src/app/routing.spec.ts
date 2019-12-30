@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { routes } from '@app/app-routing.module';
-import { ActivityEntryComponent } from '@app/main-panel/activities/components';
-import { ActivitiesPageComponent } from '@app/main-panel/activities/pages';
 import {
+  ActivityEntryComponent,
   ActivityEntryListComponent,
-  ActivityPanelComponent,
-} from '@app/main-panel/activities/smarts';
+  ActivityFormComponent,
+} from '@app/main-panel/activities/components';
+import { ActivitiesPageComponent } from '@app/main-panel/activities/pages';
+import { ActivityPanelComponent } from '@app/main-panel/activities/smarts';
 import { SkillsSidebarTreeComponent } from '@app/main-panel/components';
 import { DashboardPageComponent } from '@app/main-panel/pages';
 import { SkillCardComponent } from '@app/main-panel/skills/components';
@@ -40,6 +41,7 @@ describe('routes', () => {
       ],
       declarations: [
         ActivitiesPageComponent,
+        ActivityFormComponent,
         DashboardPageComponent,
         SettingsPageComponent,
         SkillsPageComponent,

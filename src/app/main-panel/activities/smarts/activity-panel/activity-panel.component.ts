@@ -1,84 +1,110 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import {
   ActivitiesQuery,
   ActivitiesService,
   Activity,
+  ActivityEntry,
+  ActivityEntryContent,
   createActivity,
 } from '@app/main-panel/activities/state';
-import { Skill, SkillsQuery } from '@app/main-panel/skills/state';
-import { HashMap } from '@datorama/akita';
-import { Category } from '@model/categories';
+import {
+  Skill,
+  SkillsQuery,
+  SkillsService,
+} from '@app/main-panel/skills/state';
+import { HashMap, ID } from '@datorama/akita';
+import { RouterQuery } from '@datorama/akita-ng-router-store';
+import {
+  CategoriesQuery,
+  CategoriesService,
+  Category,
+} from '@model/categories';
+import { SubscriptionHandler } from '@shared/subscription-handler';
 import { Observable } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
-
-// TODO: Make this more dumb. Split
+import { filter, first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'dfys-activity-panel',
   templateUrl: './activity-panel.component.html',
   styleUrls: ['./activity-panel.component.scss'],
 })
-export class ActivityPanelComponent implements OnInit {
-  @Input() activity$: Observable<Activity>;
-  @Input() skills$: Observable<HashMap<Skill>>;
-  @Input() categories$: Observable<HashMap<Category>>;
-  isLoading$: Observable<boolean>;
+export class ActivityPanelComponent extends SubscriptionHandler
+  implements OnInit {
+  @Input() id$: Observable<ID>;
 
-  activityForm = this.fb.group({
-    title: ['', Validators.required],
-    description: '',
-    skill: [-1, Validators.required],
-    category: [-1, Validators.required],
-  });
+  activity$: Observable<Activity>;
+  skills$: Observable<HashMap<Skill>>;
+  categories$: Observable<HashMap<Category>>;
+  isLoading$: Observable<boolean>;
+  activityEntries$: Observable<ActivityEntry[]>;
 
   constructor(
-    private fb: FormBuilder,
     private activitiesQuery: ActivitiesQuery,
     private skillsQuery: SkillsQuery,
-    private activitiesService: ActivitiesService
-  ) {}
+    private skillsService: SkillsService,
+    private routerQuery: RouterQuery,
+    private activitiesService: ActivitiesService,
+    private categoriesService: CategoriesService,
+    private categoriesQuery: CategoriesQuery
+  ) {
+    super();
+  }
 
   ngOnInit() {
     this.isLoading$ = this.skillsQuery.isActivityLoading();
 
-    this.activity$
+    this.id$
       .pipe(
-        filter(activity => activity != null),
+        filter(id => id != null),
         first()
       )
-      .subscribe(activity => {
-        this.activityForm.setValue({
-          title: activity.title,
-          description: activity.description,
-          skill: activity.skill,
-          category: activity.category,
-        });
+      .subscribe(id => {
+        this.loadData(id);
+        this.setData(id);
       });
   }
 
-  onSubmit() {
-    console.log('TODO: Submit!');
-    if (this.activityForm.valid && this.activityForm.touched) {
-      this.activitiesService.addActivity(
-        createActivity(this.activityForm.value)
-      );
-    }
+  private loadData(id: ID) {
+    this.skillsService.loadSkills();
+    this.activitiesService.loadActivity(id);
   }
 
-  get title() {
-    return this.activityForm.get('title');
+  private setData(id: ID) {
+    this.skills$ = this.skillsQuery
+      .selectAll({ asObject: true })
+      .pipe(filter(a => a != null));
+    this.categories$ = this.categoriesQuery
+      .selectAll({ asObject: true })
+      .pipe(filter(a => a != null));
+    this.activity$ = this.activitiesQuery
+      .selectEntity(id)
+      .pipe(filter(a => a != null));
+
+    this.activityEntries$ = this.activity$.pipe(
+      map(activity => this.activitiesQuery.getEntriesFromActivity(activity))
+    );
+
+    this.addSubscription(
+      this.activity$.subscribe(activity => {
+        this.skillsService.setActive(activity.skill);
+        this.categoriesService.setActive(activity.category);
+      })
+    );
   }
 
-  get description() {
-    return this.activityForm.get('description');
+  private onActivitySubmit(activity: Partial<Activity>) {
+    this.activitiesService.addActivity(createActivity(activity));
   }
 
-  get skill() {
-    return this.activityForm.get('skill');
+  private onEntryAdd(content: ActivityEntryContent) {
+    this.activity$.pipe(first()).subscribe(activity => {
+      this.activitiesService.addEntry(activity.id, content);
+    });
   }
 
-  get category() {
-    return this.activityForm.get('category');
+  private onEntryChange(entry: ActivityEntry) {
+    this.activity$.pipe(first()).subscribe(activity => {
+      this.activitiesService.updateEntry(activity.id, entry);
+    });
   }
 }

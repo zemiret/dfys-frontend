@@ -3,12 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularMaterialModule } from '@app/angular-material.module';
-import { ActivityEntryComponent } from '@app/main-panel/activities/components';
 import {
+  ActivityEntryComponent,
   ActivityEntryListComponent,
-  ActivityPanelComponent,
-} from '@app/main-panel/activities/smarts';
-import { createActivity } from '@app/main-panel/activities/state';
+  ActivityFormComponent,
+} from '@app/main-panel/activities/components';
+import { ActivityPanelComponent } from '@app/main-panel/activities/smarts';
 import { RouterQuery } from '@datorama/akita-ng-router-store';
 import { SharedModule } from '@shared/shared.module';
 import { of } from 'rxjs';
@@ -32,6 +32,7 @@ describe('ActivitiesPageComponent', () => {
       declarations: [
         ActivitiesPageComponent,
         ActivityPanelComponent,
+        ActivityFormComponent,
         ActivityEntryListComponent,
         ActivityEntryComponent,
       ],
@@ -42,7 +43,7 @@ describe('ActivitiesPageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActivitiesPageComponent);
     component = fixture.componentInstance;
-    component.activity$ = of(createActivity({}));
+    component.id$ = of();
     fixture.detectChanges();
   });
 

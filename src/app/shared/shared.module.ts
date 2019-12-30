@@ -9,11 +9,9 @@ import {
   InputBtnControlComponent,
   MainNavigationComponent,
 } from '@shared/components';
-import { NgLetDirective } from './directives/ng-let.directive';
 
 const exportedMembers = [
   ActivityCardComponent,
-  NgLetDirective,
   MainNavigationComponent,
   InputBtnControlComponent,
 ];

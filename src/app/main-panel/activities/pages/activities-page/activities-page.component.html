@@ -1,10 +1,5 @@
 <main class="container">
-  <a (click)="navigateBack()">BACK</a>
+  <a (click)="navigateToSkill()">BACK</a>
 
-  <dfys-activity-panel
-    [activity$]="activity$"
-    [skills$]="skills$"
-    [categories$]="categories$"
-  >
-  </dfys-activity-panel>
+  <dfys-activity-panel [id$]="id$"> </dfys-activity-panel>
 </main>

@@ -1,10 +1,12 @@
 import { HashMap, ID } from '@datorama/akita';
 
+export type ActivityEntryContent = string;
+
 export interface ActivityEntry {
   id: ID;
   addDate: string;
   modifyDate: string;
-  comment: string;
+  comment: ActivityEntryContent;
 }
 
 export interface Activity {

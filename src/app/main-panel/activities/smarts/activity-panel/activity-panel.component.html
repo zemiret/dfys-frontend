@@ -1,85 +1,18 @@
-<mat-card
-  class="activity-panel"
-  *ngLet="{
-    activity: activity$ | async,
-    skills: skills$ | async,
-    categories: categories$ | async
-  } as data"
->
-  <div *ngIf="(isLoading$ | async) === false">
-    <form [formGroup]="activityForm" (ngSubmit)="onSubmit()">
-      <div fxLayout="column">
-        <mat-form-field>
-          <label>
-            <input
-              required
-              matInput
-              type="text"
-              formControlName="title"
-              [placeholder]="data.activity?.title"
-              [value]="data.activity?.title"
-            />
-          </label>
-          <mat-error *ngIf="title.invalid">Title error</mat-error>
-        </mat-form-field>
+<mat-card class="activity-panel">
+  <dfys-activity-form
+    [activity$]="activity$"
+    [skills$]="skills$"
+    [categories$]="categories$"
+    [isLoading$]="isLoading$"
+    (activitySubmit)="onActivitySubmit($event)"
+  >
+  </dfys-activity-form>
 
-        <mat-form-field>
-          <label>
-            <textarea
-              matInput
-              formControlName="description"
-              [placeholder]="data.activity?.description"
-              [value]="data.activity?.description"
-            ></textarea>
-          </label>
-          <mat-error *ngIf="description.invalid">Description error</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-select
-            required
-            [placeholder]="data.skills[(data.activity?.skill)]?.name"
-            [value]="data.activity?.skill"
-          >
-            <mat-option
-              *ngFor="let skill of data?.skills | keyvalue"
-              [value]="skill.value.id"
-            >
-              {{ skill.value.name }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="skill.invalid">skill error</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-select
-            required
-            [placeholder]="data.categories[(data.activity?.category)]?.name"
-            [value]="data.activity?.category"
-          >
-            <mat-option
-              *ngFor="let category of data?.categories | keyvalue"
-              [value]="category.value.id"
-            >
-              {{ category.value.name }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="category.invalid">category error</mat-error>
-        </mat-form-field>
-      </div>
-
-      <button type="submit" [disabled]="!activityForm.valid">Submit</button>
-    </form>
-  </div>
-
-  <dfys-activity-entry-list [activity$]="activity$"></dfys-activity-entry-list>
-
-  <!--  <div-->
-  <!--    *ngFor="-->
-  <!--      let entry of this.activitiesQuery.getEntriesFromActivity(data.activity)-->
-  <!--    "-->
-  <!--  >-->
-  <!--    {{ entry.comment }}-->
-
-  <!--  </div>-->
+  <dfys-activity-entry-list
+    [activity$]="activity$"
+    [entries$]="activityEntries$"
+    (entryAdd)="onEntryAdd($event)"
+    (entryChange)="onEntryChange($event)"
+  >
+  </dfys-activity-entry-list>
 </mat-card>

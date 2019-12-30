@@ -4,13 +4,13 @@
 
   <label>
     <input type="text" [(ngModel)]="newEntryComment" />
-    <button (click)="addEntry()">Add entry</button>
+    <button (click)="onEntryAddClick()">Add entry</button>
   </label>
 
   <div style="height: 40px"></div>
 
   <dfys-activity-entry
-    *ngFor="let entry of entries; trackBy: getEntryKey"
+    *ngFor="let entry of entries$ | async; trackBy: getEntryKey"
     [entry]="entry"
     (entryChanged)="onEntryChange($event)"
   >

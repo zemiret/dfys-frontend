@@ -8,7 +8,7 @@ export const Endpoints = {
   ACTIVITIES: `${API_PREFIX}/activities`,
   RECENT_ACTIVITIES: `${API_PREFIX}/activities/recent`,
 
-  ENTRIES: 'entries', // usually appended to activities with an id
+  ENTRIES: 'entries', // usually appended to activities with an id$
 
   LOGIN: `${API_PREFIX}/auth/login`,
   LOGOUT: `${API_PREFIX}/auth/logout`,

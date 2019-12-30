@@ -4,8 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '@app/angular-material.module';
 import { ActivitiesPageComponent } from '@app/main-panel/activities/pages';
 import { SharedModule } from '@shared/shared.module';
-import { ActivityEntryComponent } from './components';
-import { ActivityEntryListComponent, ActivityPanelComponent } from './smarts';
+import {
+  ActivityEntryComponent,
+  ActivityEntryListComponent,
+  ActivityFormComponent,
+} from './components';
+import { ActivityPanelComponent } from './smarts';
 
 @NgModule({
   declarations: [
@@ -13,6 +17,7 @@ import { ActivityEntryListComponent, ActivityPanelComponent } from './smarts';
     ActivityPanelComponent,
     ActivityEntryListComponent,
     ActivityEntryComponent,
+    ActivityFormComponent,
   ],
   imports: [
     CommonModule,
