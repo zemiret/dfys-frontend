@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { SkillsQuery, SkillsService } from '@app/main-panel/skills/state';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import {
+  Skill,
+  SkillsQuery,
+  SkillsService,
+} from '@app/main-panel/skills/state';
 import { ID } from '@datorama/akita';
-import { RouterQuery } from '@datorama/akita-ng-router-store';
 import { Category } from '@model/categories';
+import { RouteNames } from '@shared/constants/routes';
 import { SubscriptionHandler } from '@shared/subscription-handler';
-import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { interval, Observable } from 'rxjs';
+import { filter, map, switchMap, throttle } from 'rxjs/operators';
 
 @Component({
   selector: 'dfys-skills-page',
@@ -14,39 +19,42 @@ import { filter } from 'rxjs/operators';
 })
 export class SkillsPageComponent extends SubscriptionHandler implements OnInit {
   categories$: Observable<Category[]>;
+  skill$: Observable<Skill>;
   id: ID;
 
   constructor(
     private skillsQuery: SkillsQuery,
-    private routerQuery: RouterQuery,
-    private skillService: SkillsService
+    private skillService: SkillsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     super();
+
+    this.addSubscription(
+      this.router.events
+        .pipe(
+          filter(evt => evt instanceof NavigationEnd),
+          switchMap(() =>
+            this.route.url.pipe(map(segments => segments.join('/')))
+          ),
+          filter(url => url.includes(RouteNames.SKILLS)),
+          switchMap(() => this.route.params.pipe(map(p => p.id))),
+          throttle(() => interval(50))
+        )
+        .subscribe(id => this.setData(id))
+    );
   }
 
-  ngOnInit() {
-    this.addSkillLoadSubscription();
-  }
+  ngOnInit() {}
 
   selectActivitiesForCategory(category: Category) {
     return this.skillsQuery.selectSkillActivities(this.id, category.id);
   }
 
-  private addSkillLoadSubscription() {
-    // TODO: This fires one last time after routing (which is not good...)
-    this.addSubscription(
-      this.routerQuery
-        .selectParams<ID>('id')
-        .pipe(filter(id => id != null))
-        .subscribe(id => {
-          this.setData(id);
-        })
-    );
-  }
-
   private setData(id: ID) {
     this.skillService.loadSkill(id);
     this.categories$ = this.skillsQuery.selectSkillCategories(id);
+    this.skill$ = this.skillsQuery.selectEntity(id);
     this.id = id;
   }
 }
